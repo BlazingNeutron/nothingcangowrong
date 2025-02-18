@@ -16,3 +16,4 @@
 position = Vector2(738, 0)
 
 [node name="Overlay" parent="." instance=ExtResource("1_y8e0b")]
+visible = false
