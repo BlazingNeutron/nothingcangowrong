@@ -12,16 +12,7 @@
 [sub_resource type="SpriteFrames" id="SpriteFrames_lcam8"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": null
-}, {
-"duration": 1.0,
-"texture": ExtResource("1_ev4em")
-}, {
-"duration": 1.0,
-"texture": ExtResource("1_ev4em")
-}, {
-"duration": 1.0,
+"duration": 10.0,
 "texture": ExtResource("1_ev4em")
 }, {
 "duration": 1.0,
@@ -55,5 +46,5 @@ animations = [{
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_lcam8")
 autoplay = "default"
-frame = 10
+frame = 7
 frame_progress = 1.0

@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://cgly5le8ow085"]
+
+[ext_resource type="PackedScene" uid="uid://dmpkbdyoo1qvm" path="res://scenes/panels/Panel.tscn" id="1_77qqq"]
+[ext_resource type="Script" path="res://scripts/chat.gd" id="2_dncco"]
+[ext_resource type="Texture2D" uid="uid://cxbns01ioc53p" path="res://assets/images/chat-screen.png" id="2_pboab"]
+[ext_resource type="FontFile" uid="uid://btv6f7cyb43j7" path="res://assets/fonts/SpaceNova-6Rpd1.otf" id="3_ujy21"]
+
+[sub_resource type="Theme" id="Theme_gj8da"]
+default_font = ExtResource("3_ujy21")
+default_font_size = 14
+
+[node name="Panel" instance=ExtResource("1_77qqq")]
+script = ExtResource("2_dncco")
+
+[node name="Background" parent="." index="0"]
+region_rect = Rect2(0, 496, 418, 496)
+
+[node name="Screen" type="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_pboab")
+
+[node name="ChatOutput" type="RichTextLabel" parent="." index="2"]
+offset_left = -166.0
+offset_top = -139.0
+offset_right = 164.0
+offset_bottom = 135.0
+theme = SubResource("Theme_gj8da")
+theme_override_colors/default_color = Color(0.282353, 0.945098, 0.560784, 1)
+bbcode_enabled = true
+scroll_following = true
+
+[node name="NextMessage" type="Timer" parent="." index="3"]
+one_shot = true
+
+[connection signal="timeout" from="NextMessage" to="." method="_on_next_message_timeout"]
