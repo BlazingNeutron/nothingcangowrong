@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://b2hg70jmfdo10"]
+
+[ext_resource type="PackedScene" uid="uid://daqqsc7gij321" path="res://scenes/MainPanel.tscn" id="1_k1nbn"]
+[ext_resource type="PackedScene" uid="uid://c3qw8gw7xakwa" path="res://scenes/TutorialOverlay.tscn" id="1_y8e0b"]
+[ext_resource type="PackedScene" uid="uid://cu5g248jt85g7" path="res://scenes/panels/panel-instance-example.tscn" id="2_5jm46"]
+
+[node name="Game" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="MainPanel" parent="." instance=ExtResource("1_k1nbn")]
+
+[node name="Panel" parent="MainPanel" instance=ExtResource("2_5jm46")]
+
+[node name="Panel2" parent="MainPanel" instance=ExtResource("2_5jm46")]
+position = Vector2(738, 0)
+
+[node name="Overlay" parent="." instance=ExtResource("1_y8e0b")]
