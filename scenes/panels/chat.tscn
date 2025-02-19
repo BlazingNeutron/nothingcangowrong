@@ -3,11 +3,11 @@
 [ext_resource type="PackedScene" uid="uid://dmpkbdyoo1qvm" path="res://scenes/panels/Panel.tscn" id="1_77qqq"]
 [ext_resource type="Script" path="res://scripts/chat.gd" id="2_dncco"]
 [ext_resource type="Texture2D" uid="uid://cxbns01ioc53p" path="res://assets/images/chat-screen.png" id="2_pboab"]
-[ext_resource type="FontFile" uid="uid://btv6f7cyb43j7" path="res://assets/fonts/SpaceNova-6Rpd1.otf" id="3_ujy21"]
+[ext_resource type="FontFile" uid="uid://d2lma1aoadpls" path="res://assets/fonts/Minecraftchmc-dBlX.ttf" id="4_hi4p0"]
 
 [sub_resource type="Theme" id="Theme_gj8da"]
-default_font = ExtResource("3_ujy21")
-default_font_size = 14
+default_font = ExtResource("4_hi4p0")
+default_font_size = 24
 
 [node name="Panel" instance=ExtResource("1_77qqq")]
 script = ExtResource("2_dncco")
