@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://b2hg70jmfdo10"]
+[gd_scene load_steps=8 format=3 uid="uid://b2hg70jmfdo10"]
 
+[ext_resource type="Script" path="res://scripts/gamenode.gd" id="1_3c815"]
 [ext_resource type="PackedScene" uid="uid://daqqsc7gij321" path="res://scenes/MainPanel.tscn" id="1_k1nbn"]
 [ext_resource type="PackedScene" uid="uid://c3qw8gw7xakwa" path="res://scenes/TutorialOverlay.tscn" id="1_y8e0b"]
 [ext_resource type="PackedScene" uid="uid://cvmn7yvt8fqdw" path="res://scenes/panels/energy-indicators.tscn" id="3_1efqc"]
@@ -8,6 +9,8 @@
 [ext_resource type="AudioStream" uid="uid://buev7vohdepek" path="res://assets/sounds/One Cosmos  Royalty Free Sci-Fi Background Music (No Copyright).mp3" id="5_dufet"]
 
 [node name="Game" type="Node2D"]
+process_mode = 1
+script = ExtResource("1_3c815")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -22,9 +25,11 @@ position = Vector2(-986, -508)
 [node name="Panel" parent="MainPanel" instance=ExtResource("4_rlqnx")]
 
 [node name="Overlay" parent="." instance=ExtResource("1_y8e0b")]
+process_mode = 3
 visible = false
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("5_dufet")
 autoplay = true
 bus = &"Music"
