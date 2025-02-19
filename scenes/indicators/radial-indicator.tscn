@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://c48p75mcm25jp"]
+
+[ext_resource type="Script" path="res://scripts/indicators/radial-indicator.gd" id="1_tm44i"]
+[ext_resource type="Texture2D" uid="uid://cchqaegl2esho" path="res://assets/images/radial-indicator-mask.png" id="2_vuftt"]
+[ext_resource type="Texture2D" uid="uid://ceg0qx1qgbcb0" path="res://assets/images/rg-radial-indicator.png" id="3_7ypyw"]
+[ext_resource type="Texture2D" uid="uid://cfbluitthtnc3" path="res://assets/images/radial-indicator-frame.png" id="4_rcvod"]
+
+[node name="RadialIndicator" type="Node2D"]
+script = ExtResource("1_tm44i")
+
+[node name="ValueMask" type="Sprite2D" parent="."]
+clip_children = 1
+texture = ExtResource("2_vuftt")
+region_rect = Rect2(0, 0, 250, 125)
+
+[node name="ValueSprite" type="Sprite2D" parent="ValueMask"]
+position = Vector2(0, 64)
+rotation = 1.64934
+texture = ExtResource("3_7ypyw")
+flip_v = true
+region_rect = Rect2(0, 0, 250, 125)
+
+[node name="FrameSprite" type="Sprite2D" parent="."]
+texture = ExtResource("4_rcvod")

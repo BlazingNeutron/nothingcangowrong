@@ -12,7 +12,7 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="TextureButton" type="TextureButton" parent="Control" index="0"]
+[node name="SensorAdder" type="TextureButton" parent="Control" index="0"]
 layout_mode = 0
 offset_left = -160.0
 offset_top = -2.0
@@ -22,4 +22,15 @@ scale = Vector2(0.25, 0.25)
 texture_normal = ExtResource("2_myli5")
 texture_pressed = ExtResource("3_843yk")
 
-[connection signal="pressed" from="Control/TextureButton" to="." method="_on_texture_button_pressed"]
+[node name="WeaponAdder" type="TextureButton" parent="Control" index="1"]
+layout_mode = 0
+offset_left = -94.0
+offset_top = -1.0
+offset_right = 162.0
+offset_bottom = 255.0
+scale = Vector2(0.25, 0.25)
+texture_normal = ExtResource("2_myli5")
+texture_pressed = ExtResource("3_843yk")
+
+[connection signal="pressed" from="Control/SensorAdder" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="Control/WeaponAdder" to="." method="_on_weapon_adder_pressed"]

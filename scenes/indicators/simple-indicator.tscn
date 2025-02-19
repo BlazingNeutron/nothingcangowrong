@@ -1,12 +1,12 @@
 [gd_scene load_steps=5 format=3 uid="uid://cf6k2g6gsqydf"]
 
-[ext_resource type="Script" path="res://scripts/simple_indicator.gd" id="1_7yfdm"]
+[ext_resource type="Script" path="res://scripts/indicators/simple_indicator.gd" id="1_qbywq"]
 [ext_resource type="Texture2D" uid="uid://cnhy7xutjftt" path="res://assets/images/redgreen-indicator-mask.png" id="2_6qb1d"]
 [ext_resource type="Texture2D" uid="uid://cm0uqpg1oiwyc" path="res://assets/images/redgreen-indicator.png" id="2_dp4gy"]
 [ext_resource type="Texture2D" uid="uid://02mrbej0ad6x" path="res://assets/images/rg-indicator-frame.png" id="3_vg5nc"]
 
-[node name="Indicator" type="Node2D"]
-script = ExtResource("1_7yfdm")
+[node name="SimpleIndicator" type="Node2D"]
+script = ExtResource("1_qbywq")
 
 [node name="ValueMask" type="Sprite2D" parent="."]
 clip_children = 1
