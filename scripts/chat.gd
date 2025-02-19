@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var next_message: Timer = $NextMessage
 @onready var chat_output: RichTextLabel = $ChatOutput
+@onready var notification: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 var current_time = 0
 var message_index = 0
@@ -21,6 +22,7 @@ func _ready() -> void:
 	next_message.start()
 
 func _on_next_message_timeout() -> void:
+	notification.play()
 	current_time = messages[message_index][0]
 	chat_output.append_text("<[i][color=" + messages[message_index][1] + "[/color][/i]>:\n")
 	chat_output.append_text(messages[message_index][2]+"\n")

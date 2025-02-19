@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cvmn7yvt8fqdw"]
+
+[ext_resource type="PackedScene" uid="uid://dmpkbdyoo1qvm" path="res://scenes/panels/Panel.tscn" id="1_egebv"]
+[ext_resource type="PackedScene" uid="uid://c48p75mcm25jp" path="res://scenes/indicators/indicator.tscn" id="2_ndcii"]
+[ext_resource type="PackedScene" uid="uid://cf6k2g6gsqydf" path="res://scenes/indicators/simple-indicator.tscn" id="3_uoitb"]
+
+[node name="Panel" instance=ExtResource("1_egebv")]
+
+[node name="Background" parent="." index="0"]
+region_rect = Rect2(0, 190, 418, 297)
+
+[node name="CoreIndicator" parent="." index="1" instance=ExtResource("2_ndcii")]
+position = Vector2(-115, -78)
+scale = Vector2(0.5, 0.5)
+
+[node name="SensorIndicator" parent="." index="2" instance=ExtResource("3_uoitb")]
+position = Vector2(-121, 55)
+scale = Vector2(0.6, 0.6)

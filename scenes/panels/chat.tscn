@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cgly5le8ow085"]
+[gd_scene load_steps=7 format=3 uid="uid://cgly5le8ow085"]
 
 [ext_resource type="PackedScene" uid="uid://dmpkbdyoo1qvm" path="res://scenes/panels/Panel.tscn" id="1_77qqq"]
 [ext_resource type="Script" path="res://scripts/chat.gd" id="2_dncco"]
 [ext_resource type="Texture2D" uid="uid://cxbns01ioc53p" path="res://assets/images/chat-screen.png" id="2_pboab"]
 [ext_resource type="FontFile" uid="uid://d2lma1aoadpls" path="res://assets/fonts/Minecraftchmc-dBlX.ttf" id="4_hi4p0"]
+[ext_resource type="AudioStream" uid="uid://ieswcm66pdpx" path="res://assets/sounds/ping.mp3" id="5_u1jw0"]
 
 [sub_resource type="Theme" id="Theme_gj8da"]
 default_font = ExtResource("4_hi4p0")
@@ -30,5 +31,9 @@ scroll_following = true
 
 [node name="NextMessage" type="Timer" parent="." index="3"]
 one_shot = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="4"]
+stream = ExtResource("5_u1jw0")
+bus = &"SFX"
 
 [connection signal="timeout" from="NextMessage" to="." method="_on_next_message_timeout"]

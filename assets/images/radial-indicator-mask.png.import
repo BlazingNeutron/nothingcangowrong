@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cr27km4juyg2s"
-path="res://.godot/imported/redgreen-indictator.png-056f7f34e1c79b7158eb7c513e8459ff.ctex"
+uid="uid://cchqaegl2esho"
+path="res://.godot/imported/radial-indicator-mask.png-ae5ec8216b31313fbac7a53a0c055b3c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/redgreen-indictator.png"
-dest_files=["res://.godot/imported/redgreen-indictator.png-056f7f34e1c79b7158eb7c513e8459ff.ctex"]
+source_file="res://assets/images/radial-indicator-mask.png"
+dest_files=["res://.godot/imported/radial-indicator-mask.png-ae5ec8216b31313fbac7a53a0c055b3c.ctex"]
 
 [params]
 

@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://bnr8tteeo0epi"]
+
+[ext_resource type="PackedScene" uid="uid://dmpkbdyoo1qvm" path="res://scenes/panels/Panel.tscn" id="1_klwh3"]
+[ext_resource type="Texture2D" uid="uid://df80lye4fhuxh" path="res://assets/images/green-button-released.png" id="2_myli5"]
+[ext_resource type="Texture2D" uid="uid://dvyvs1m8ebex3" path="res://assets/images/green-button-pressed.png" id="3_843yk"]
+
+[node name="Panel" instance=ExtResource("1_klwh3")]
+
+[node name="Control" type="Control" parent="." index="1"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureButton" type="TextureButton" parent="Control" index="0"]
+layout_mode = 0
+offset_left = -160.0
+offset_top = -2.0
+offset_right = 96.0
+offset_bottom = 254.0
+scale = Vector2(0.25, 0.25)
+texture_normal = ExtResource("2_myli5")
+texture_pressed = ExtResource("3_843yk")
+
+[connection signal="pressed" from="Control/TextureButton" to="." method="_on_texture_button_pressed"]
