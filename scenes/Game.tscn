@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://c3qw8gw7xakwa" path="res://scenes/TutorialOverlay.tscn" id="1_y8e0b"]
 [ext_resource type="PackedScene" uid="uid://cvmn7yvt8fqdw" path="res://scenes/panels/energy-indicators.tscn" id="3_1efqc"]
 [ext_resource type="PackedScene" uid="uid://cgly5le8ow085" path="res://scenes/panels/chat.tscn" id="3_ed17f"]
-[ext_resource type="PackedScene" uid="uid://bnr8tteeo0epi" path="res://energy-controls-panel.tscn" id="4_rlqnx"]
+[ext_resource type="PackedScene" uid="uid://bnr8tteeo0epi" path="res://scenes/panels/energy-controls-panel.tscn" id="4_rlqnx"]
 [ext_resource type="AudioStream" uid="uid://buev7vohdepek" path="res://assets/sounds/One Cosmos  Royalty Free Sci-Fi Background Music (No Copyright).mp3" id="5_dufet"]
 
 [node name="Game" type="Node2D"]
