@@ -41,13 +41,12 @@ var sensors_energy : int = 0 :
 		sensors_energy = clamp(value, 0, 100)
 		emit_signal("sensors_energy_changed")
 		recalc_core()
-
 var life_support_energy : int = 0 :
 	get: 
 		return life_support_energy
 	set(value):
 		life_support_energy = clamp(value, 0, 100)
-		emit_signal("life_support_energy_changed")
+		emit_signal("lifesupport_energy_changed")
 		recalc_core()
 
 func _ready() -> void:
@@ -56,7 +55,7 @@ func _ready() -> void:
 	emit_signal("weapons_energy_changed")
 	emit_signal("shields_energy_changed")
 	emit_signal("engines_energy_changed")
-	emit_signal("life_support_energy_changed")
+	emit_signal("lifesupport_energy_changed")
 	recalc_core()
 
 func recalc_core() -> void:

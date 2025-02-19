@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cvmn7yvt8fqdw"]
+[gd_scene load_steps=9 format=3 uid="uid://cvmn7yvt8fqdw"]
 
 [ext_resource type="PackedScene" uid="uid://dmpkbdyoo1qvm" path="res://scenes/panels/Panel.tscn" id="1_egebv"]
 [ext_resource type="PackedScene" uid="uid://c48p75mcm25jp" path="res://scenes/indicators/radial-indicator.tscn" id="2_ndcii"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scripts/indicators/weapons_indicator.gd" id="5_8b4pg"]
 [ext_resource type="Script" path="res://scripts/indicators/shields_indicator.gd" id="6_u7gux"]
 [ext_resource type="Script" path="res://scripts/indicators/engines_indicator.gd" id="7_plf07"]
+[ext_resource type="Script" path="res://scripts/indicators/life_support_indicator.gd" id="8_5tn5p"]
 
 [node name="Panel" instance=ExtResource("1_egebv")]
 
@@ -14,25 +15,32 @@
 region_rect = Rect2(0, 190, 418, 297)
 
 [node name="CoreIndicator" parent="." index="1" instance=ExtResource("2_ndcii")]
-position = Vector2(-115, -78)
+position = Vector2(0, -75)
 scale = Vector2(0.5, 0.5)
 
-[node name="SensorIndicator" parent="." index="2" instance=ExtResource("3_uoitb")]
-position = Vector2(-131, 67)
+[node name="Indicators" type="Node2D" parent="." index="2"]
+
+[node name="SensorIndicator" parent="Indicators" index="0" instance=ExtResource("3_uoitb")]
+position = Vector2(-144, 43)
 scale = Vector2(0.4, 0.4)
 script = ExtResource("4_h7grs")
 
-[node name="WeaponsIndicator" parent="." index="3" instance=ExtResource("3_uoitb")]
-position = Vector2(-59, 66)
+[node name="WeaponsIndicator" parent="Indicators" index="1" instance=ExtResource("3_uoitb")]
+position = Vector2(-72, 43)
 scale = Vector2(0.4, 0.4)
 script = ExtResource("5_8b4pg")
 
-[node name="ShieldsIndicator" parent="." index="4" instance=ExtResource("3_uoitb")]
-position = Vector2(13, 65)
+[node name="ShieldsIndicator" parent="Indicators" index="2" instance=ExtResource("3_uoitb")]
+position = Vector2(0, 43)
 scale = Vector2(0.4, 0.4)
 script = ExtResource("6_u7gux")
 
-[node name="SimpleIndicator" parent="." index="5" instance=ExtResource("3_uoitb")]
-position = Vector2(85, 65)
+[node name="EngineIndicator" parent="Indicators" index="3" instance=ExtResource("3_uoitb")]
+position = Vector2(72, 43)
 scale = Vector2(0.4, 0.4)
 script = ExtResource("7_plf07")
+
+[node name="LifeSupportIndicator" parent="Indicators" index="4" instance=ExtResource("3_uoitb")]
+position = Vector2(144, 43)
+scale = Vector2(0.4, 0.4)
+script = ExtResource("8_5tn5p")

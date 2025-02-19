@@ -32,5 +32,36 @@ scale = Vector2(0.25, 0.25)
 texture_normal = ExtResource("2_myli5")
 texture_pressed = ExtResource("3_843yk")
 
+[node name="ShieldsAdder" type="TextureButton" parent="Control" index="2"]
+layout_mode = 0
+offset_left = -32.0
+offset_right = 224.0
+offset_bottom = 256.0
+scale = Vector2(0.25, 0.25)
+texture_normal = ExtResource("2_myli5")
+texture_pressed = ExtResource("3_843yk")
+
+[node name="EngineAdder" type="TextureButton" parent="Control" index="3"]
+layout_mode = 0
+offset_left = 32.0
+offset_right = 288.0
+offset_bottom = 256.0
+scale = Vector2(0.25, 0.25)
+texture_normal = ExtResource("2_myli5")
+texture_pressed = ExtResource("3_843yk")
+
+[node name="LifeSupportAdder" type="TextureButton" parent="Control" index="4"]
+layout_mode = 0
+offset_left = 98.0
+offset_top = 2.0
+offset_right = 354.0
+offset_bottom = 258.0
+scale = Vector2(0.25, 0.25)
+texture_normal = ExtResource("2_myli5")
+texture_pressed = ExtResource("3_843yk")
+
 [connection signal="pressed" from="Control/SensorAdder" to="." method="_on_texture_button_pressed"]
 [connection signal="pressed" from="Control/WeaponAdder" to="." method="_on_weapon_adder_pressed"]
+[connection signal="pressed" from="Control/ShieldsAdder" to="." method="_on_shields_adder_pressed"]
+[connection signal="pressed" from="Control/EngineAdder" to="." method="_on_engine_adder_pressed"]
+[connection signal="pressed" from="Control/LifeSupportAdder" to="." method="_on_life_support_adder_pressed"]
