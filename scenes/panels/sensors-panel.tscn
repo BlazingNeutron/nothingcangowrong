@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dum6vcbekxohf"]
+
+[ext_resource type="PackedScene" uid="uid://dmpkbdyoo1qvm" path="res://scenes/panels/Panel.tscn" id="1_qaxki"]
+[ext_resource type="Texture2D" uid="uid://cxbns01ioc53p" path="res://assets/images/chat-screen.png" id="2_ky8v6"]
+[ext_resource type="Texture2D" uid="uid://dq0caxvdica8y" path="res://assets/images/starfield.png" id="3_0et30"]
+
+[node name="Panel" instance=ExtResource("1_qaxki")]
+
+[node name="Background" parent="." index="0"]
+region_rect = Rect2(0, 496, 418, 496)
+
+[node name="Screen" type="Sprite2D" parent="." index="1"]
+clip_children = 2
+texture = ExtResource("2_ky8v6")
+
+[node name="Sprite2D" type="Sprite2D" parent="Screen" index="0"]
+modulate = Color(1, 1, 1, 0.411765)
+texture = ExtResource("3_0et30")
+region_enabled = true
+region_rect = Rect2(0, 0, 348, 285)

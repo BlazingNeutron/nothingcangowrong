@@ -1,0 +1,45 @@
+[gd_scene load_steps=13 format=3 uid="uid://dau8e4lmba7jb"]
+
+[ext_resource type="PackedScene" uid="uid://dmpkbdyoo1qvm" path="res://scenes/panels/Panel.tscn" id="1_5sxin"]
+[ext_resource type="Shader" path="res://scripts/lightningball.gdshader" id="2_gfb1n"]
+
+[sub_resource type="Gradient" id="Gradient_g58vn"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_6gyyi"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_4knk6"]
+color_ramp = SubResource("Gradient_g58vn")
+noise = SubResource("FastNoiseLite_6gyyi")
+
+[sub_resource type="Gradient" id="Gradient_7ih28"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_cl00b"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3v3dl"]
+color_ramp = SubResource("Gradient_7ih28")
+noise = SubResource("FastNoiseLite_cl00b")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i52o1"]
+shader = ExtResource("2_gfb1n")
+shader_parameter/brightness = 2.5
+shader_parameter/time_scale = 1.0
+shader_parameter/noise = SubResource("NoiseTexture2D_4knk6")
+shader_parameter/noise2 = SubResource("NoiseTexture2D_3v3dl")
+
+[sub_resource type="Gradient" id="Gradient_7wjmv"]
+colors = PackedColorArray(0, 0, 0, 1, 0.282353, 0.945098, 0.560784, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_x28or"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_wwlop"]
+color_ramp = SubResource("Gradient_7wjmv")
+noise = SubResource("FastNoiseLite_x28or")
+
+[node name="Panel" instance=ExtResource("1_5sxin")]
+
+[node name="Background" parent="." index="0"]
+region_rect = Rect2(0, 496, 418, 496)
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="1"]
+material = SubResource("ShaderMaterial_i52o1")
+texture = SubResource("NoiseTexture2D_wwlop")

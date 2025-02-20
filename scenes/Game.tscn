@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b2hg70jmfdo10"]
+[gd_scene load_steps=14 format=3 uid="uid://b2hg70jmfdo10"]
 
 [ext_resource type="Script" path="res://scripts/gamenode.gd" id="1_3c815"]
 [ext_resource type="PackedScene" uid="uid://daqqsc7gij321" path="res://scenes/MainPanel.tscn" id="1_k1nbn"]
@@ -7,30 +7,46 @@
 [ext_resource type="PackedScene" uid="uid://cgly5le8ow085" path="res://scenes/panels/chat.tscn" id="3_ed17f"]
 [ext_resource type="PackedScene" uid="uid://bnr8tteeo0epi" path="res://scenes/panels/energy-controls-panel.tscn" id="4_rlqnx"]
 [ext_resource type="AudioStream" uid="uid://buev7vohdepek" path="res://assets/sounds/One Cosmos  Royalty Free Sci-Fi Background Music (No Copyright).mp3" id="5_dufet"]
-[ext_resource type="Shader" path="res://scripts/lightningball.gdshader" id="8_hmr7b"]
+[ext_resource type="PackedScene" uid="uid://dau8e4lmba7jb" path="res://scenes/panels/core-panel.tscn" id="6_8mw5w"]
+[ext_resource type="PackedScene" uid="uid://dum6vcbekxohf" path="res://scenes/panels/sensors-panel.tscn" id="7_o8pqt"]
+[ext_resource type="Texture2D" uid="uid://kn1olbilga72" path="res://assets/images/console-glow.png" id="8_f6hgi"]
 
-[sub_resource type="Gradient" id="Gradient_xoeuq"]
+[sub_resource type="Animation" id="Animation_nmo0u"]
+resource_name = "pulse"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.415686)]
+}
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_b03k5"]
+[sub_resource type="Animation" id="Animation_ioxpf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_lpql0"]
-color_ramp = SubResource("Gradient_xoeuq")
-noise = SubResource("FastNoiseLite_b03k5")
-
-[sub_resource type="Gradient" id="Gradient_ncppr"]
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_5vklf"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_74jay"]
-color_ramp = SubResource("Gradient_ncppr")
-noise = SubResource("FastNoiseLite_5vklf")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_s7ryc"]
-shader = ExtResource("8_hmr7b")
-shader_parameter/brightness = 2.5
-shader_parameter/time_scale = 1.0
-shader_parameter/noise = SubResource("NoiseTexture2D_lpql0")
-shader_parameter/noise2 = SubResource("NoiseTexture2D_74jay")
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3s02m"]
+_data = {
+"RESET": SubResource("Animation_ioxpf"),
+"pulse": SubResource("Animation_nmo0u")
+}
 
 [node name="Game" type="Node2D"]
 process_mode = 1
@@ -50,6 +66,22 @@ position = Vector2(-986, -508)
 [node name="EnergyInputPanel" parent="MainPanel" instance=ExtResource("4_rlqnx")]
 position = Vector2(-983, -241)
 
+[node name="CorePanel" parent="MainPanel" instance=ExtResource("6_8mw5w")]
+position = Vector2(-980, 396)
+
+[node name="SensorsPanel" parent="MainPanel" instance=ExtResource("7_o8pqt")]
+position = Vector2(-6, -430)
+
+[node name="ConsoleGlow" type="Sprite2D" parent="MainPanel"]
+modulate = Color(1, 1, 1, 0)
+texture = ExtResource("8_f6hgi")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MainPanel/ConsoleGlow"]
+libraries = {
+"": SubResource("AnimationLibrary_3s02m")
+}
+autoplay = "pulse"
+
 [node name="Overlay" parent="." instance=ExtResource("1_y8e0b")]
 process_mode = 3
 visible = false
@@ -59,15 +91,3 @@ process_mode = 3
 stream = ExtResource("5_dufet")
 autoplay = true
 bus = &"Music"
-
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="ColorRect" type="ColorRect" parent="Control"]
-material = SubResource("ShaderMaterial_s7ryc")
-layout_mode = 0
-offset_right = 167.0
-offset_bottom = 160.0

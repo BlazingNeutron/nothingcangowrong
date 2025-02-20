@@ -25,7 +25,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_2s7je"]
-resource_name = "dissolve"
+resource_name = "tutorial-focus"
 length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -57,7 +57,7 @@ tracks/1/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_buhlq"]
 _data = {
 "RESET": SubResource("Animation_pg15j"),
-"dissolve": SubResource("Animation_2s7je")
+"tutorial-focus": SubResource("Animation_2s7je")
 }
 
 [node name="Overlay" type="Control"]
@@ -84,4 +84,4 @@ color = Color(0.309804, 0.309804, 0.309804, 0)
 libraries = {
 "": SubResource("AnimationLibrary_buhlq")
 }
-autoplay = "dissolve"
+autoplay = "tutorial-focus"
