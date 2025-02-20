@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bnr8tteeo0epi"]
+[gd_scene load_steps=5 format=3 uid="uid://bnr8tteeo0epi"]
 
 [ext_resource type="PackedScene" uid="uid://dmpkbdyoo1qvm" path="res://scenes/panels/Panel.tscn" id="1_klwh3"]
 [ext_resource type="Texture2D" uid="uid://df80lye4fhuxh" path="res://assets/images/green-button-released.png" id="2_myli5"]
 [ext_resource type="Texture2D" uid="uid://dvyvs1m8ebex3" path="res://assets/images/green-button-pressed.png" id="3_843yk"]
+[ext_resource type="Texture2D" uid="uid://dkhjchkrqlxnc" path="res://assets/images/ship-icons.png" id="4_4pq0l"]
 
 [node name="Panel" instance=ExtResource("1_klwh3")]
 
@@ -14,9 +15,9 @@ offset_bottom = 40.0
 
 [node name="SensorAdder" type="TextureButton" parent="Control" index="0"]
 layout_mode = 0
-offset_left = -160.0
+offset_left = -175.0
 offset_top = -2.0
-offset_right = 96.0
+offset_right = 81.0
 offset_bottom = 254.0
 scale = Vector2(0.25, 0.25)
 texture_normal = ExtResource("2_myli5")
@@ -24,9 +25,9 @@ texture_pressed = ExtResource("3_843yk")
 
 [node name="WeaponAdder" type="TextureButton" parent="Control" index="1"]
 layout_mode = 0
-offset_left = -94.0
+offset_left = -104.0
 offset_top = -1.0
-offset_right = 162.0
+offset_right = 152.0
 offset_bottom = 255.0
 scale = Vector2(0.25, 0.25)
 texture_normal = ExtResource("2_myli5")
@@ -43,8 +44,8 @@ texture_pressed = ExtResource("3_843yk")
 
 [node name="EngineAdder" type="TextureButton" parent="Control" index="3"]
 layout_mode = 0
-offset_left = 32.0
-offset_right = 288.0
+offset_left = 40.0
+offset_right = 296.0
 offset_bottom = 256.0
 scale = Vector2(0.25, 0.25)
 texture_normal = ExtResource("2_myli5")
@@ -52,13 +53,51 @@ texture_pressed = ExtResource("3_843yk")
 
 [node name="LifeSupportAdder" type="TextureButton" parent="Control" index="4"]
 layout_mode = 0
-offset_left = 98.0
+offset_left = 113.0
 offset_top = 2.0
-offset_right = 354.0
+offset_right = 369.0
 offset_bottom = 258.0
 scale = Vector2(0.25, 0.25)
 texture_normal = ExtResource("2_myli5")
 texture_pressed = ExtResource("3_843yk")
+
+[node name="Icons" type="Node2D" parent="." index="2"]
+position = Vector2(0, -148)
+
+[node name="SensorsIcon" type="Sprite2D" parent="Icons" index="0"]
+position = Vector2(-144, 110)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_4pq0l")
+region_enabled = true
+region_rect = Rect2(200, 0, 100, 100)
+
+[node name="WeaponsIcon" type="Sprite2D" parent="Icons" index="1"]
+position = Vector2(-72, 110)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_4pq0l")
+region_enabled = true
+region_rect = Rect2(300, 0, 100, 100)
+
+[node name="ShieldsIcon" type="Sprite2D" parent="Icons" index="2"]
+position = Vector2(0, 110)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_4pq0l")
+region_enabled = true
+region_rect = Rect2(100, 0, 100, 100)
+
+[node name="EngineIcon" type="Sprite2D" parent="Icons" index="3"]
+position = Vector2(72, 110)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_4pq0l")
+region_enabled = true
+region_rect = Rect2(400, 0, 100, 100)
+
+[node name="LifeSupportIcon" type="Sprite2D" parent="Icons" index="4"]
+position = Vector2(144, 110)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_4pq0l")
+region_enabled = true
+region_rect = Rect2(0, 0, 100, 100)
 
 [connection signal="pressed" from="Control/SensorAdder" to="." method="_on_texture_button_pressed"]
 [connection signal="pressed" from="Control/WeaponAdder" to="." method="_on_weapon_adder_pressed"]

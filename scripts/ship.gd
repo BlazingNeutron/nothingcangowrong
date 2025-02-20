@@ -20,14 +20,14 @@ var weapons_energy : int = 0 :
 		weapons_energy = clamp(value, 0, 100)
 		emit_signal("weapons_energy_changed")
 		recalc_core()
-var shields_energy : int = 0 :
+var shields_energy : int = 10 :
 	get: 
 		return shields_energy
 	set(value):
 		shields_energy = clamp(value, 0, 100)
 		emit_signal("shields_energy_changed")
 		recalc_core()
-var engines_energy : int = 0 :
+var engines_energy : int = 40 :
 	get: 
 		return engines_energy
 	set(value):
@@ -41,7 +41,7 @@ var sensors_energy : int = 0 :
 		sensors_energy = clamp(value, 0, 100)
 		emit_signal("sensors_energy_changed")
 		recalc_core()
-var life_support_energy : int = 0 :
+var life_support_energy : int = 10 :
 	get: 
 		return life_support_energy
 	set(value):
