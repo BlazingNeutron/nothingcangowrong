@@ -1,15 +1,25 @@
-[gd_scene load_steps=5 format=3 uid="uid://cf6k2g6gsqydf"]
+[gd_scene load_steps=7 format=3 uid="uid://cf6k2g6gsqydf"]
 
 [ext_resource type="Script" path="res://scripts/indicators/simple_indicator.gd" id="1_qbywq"]
 [ext_resource type="Texture2D" uid="uid://cnhy7xutjftt" path="res://assets/images/redgreen-indicator-mask.png" id="2_6qb1d"]
 [ext_resource type="Texture2D" uid="uid://cm0uqpg1oiwyc" path="res://assets/images/redgreen-indicator.png" id="2_dp4gy"]
 [ext_resource type="Texture2D" uid="uid://02mrbej0ad6x" path="res://assets/images/rg-indicator-frame.png" id="3_vg5nc"]
+[ext_resource type="Shader" path="res://scripts/shaders/bloom.gdshader" id="3_xukqx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fo6hm"]
+resource_local_to_scene = true
+shader = ExtResource("3_xukqx")
+shader_parameter/rect_size = Vector2(0.2, 1)
+shader_parameter/bness = 0.0
+shader_parameter/fall_off_scale = 1.0
+shader_parameter/b_offset = 0.3
 
 [node name="SimpleIndicator" type="Node2D"]
 script = ExtResource("1_qbywq")
 
 [node name="ValueMask" type="Sprite2D" parent="."]
-clip_children = 1
+modulate = Color(1, 1, 1, 0.984314)
+clip_children = 2
 texture = ExtResource("2_6qb1d")
 offset = Vector2(0, 1)
 region_rect = Rect2(0, 0, 250, 125)
@@ -19,6 +29,13 @@ texture = ExtResource("2_dp4gy")
 offset = Vector2(0, 100)
 flip_v = true
 region_rect = Rect2(0, 0, 250, 125)
+
+[node name="Glow" type="Sprite2D" parent="ValueMask"]
+unique_name_in_owner = true
+clip_children = 2
+material = SubResource("ShaderMaterial_fo6hm")
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("2_6qb1d")
 
 [node name="FrameSprite" type="Sprite2D" parent="."]
 texture = ExtResource("3_vg5nc")

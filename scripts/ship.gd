@@ -34,7 +34,7 @@ var engines_energy : int = 40 :
 		engines_energy = clamp(value, 0, 100)
 		emit_signal("engines_energy_changed")
 		recalc_core()
-var sensors_energy : int = 0 :
+var sensors_energy : int = 10 :
 	get: 
 		return sensors_energy
 	set(value):
