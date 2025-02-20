@@ -27,7 +27,7 @@ position = Vector2(962, 400)
 position = Vector2(-986, -508)
 
 [node name="EnergyInputPanel" parent="MainPanel" instance=ExtResource("4_rlqnx")]
-position = Vector2(-983, -241)
+position = Vector2(-987, -179)
 
 [node name="CorePanel" parent="MainPanel" instance=ExtResource("6_8mw5w")]
 position = Vector2(-980, 396)

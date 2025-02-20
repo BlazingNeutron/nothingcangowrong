@@ -1,11 +1,15 @@
 [gd_scene load_steps=5 format=3 uid="uid://bnr8tteeo0epi"]
 
 [ext_resource type="PackedScene" uid="uid://dmpkbdyoo1qvm" path="res://scenes/panels/Panel.tscn" id="1_klwh3"]
-[ext_resource type="Texture2D" uid="uid://df80lye4fhuxh" path="res://assets/images/green-button-released.png" id="2_myli5"]
-[ext_resource type="Texture2D" uid="uid://dvyvs1m8ebex3" path="res://assets/images/green-button-pressed.png" id="3_843yk"]
+[ext_resource type="Script" path="res://scripts/energy_controls_panel.gd" id="2_cr43r"]
+[ext_resource type="Texture2D" uid="uid://bkp8kobr4hn5e" path="res://assets/images/slider-button.png" id="4_4kcdb"]
 [ext_resource type="Texture2D" uid="uid://dkhjchkrqlxnc" path="res://assets/images/ship-icons.png" id="4_4pq0l"]
 
 [node name="Panel" instance=ExtResource("1_klwh3")]
+script = ExtResource("2_cr43r")
+
+[node name="Background" parent="." index="0"]
+region_rect = Rect2(0, 190, 418, 297)
 
 [node name="Control" type="Control" parent="." index="1"]
 layout_mode = 3
@@ -13,56 +17,53 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="SensorAdder" type="TextureButton" parent="Control" index="0"]
+[node name="SensorsVSlider" type="VSlider" parent="Control" index="0"]
 layout_mode = 0
-offset_left = -175.0
-offset_top = -2.0
-offset_right = 81.0
-offset_bottom = 254.0
-scale = Vector2(0.25, 0.25)
-texture_normal = ExtResource("2_myli5")
-texture_pressed = ExtResource("3_843yk")
+offset_left = -169.0
+offset_top = -114.0
+offset_right = -119.0
+offset_bottom = 64.0
+theme_override_icons/grabber = ExtResource("4_4kcdb")
+theme_override_icons/grabber_highlight = ExtResource("4_4kcdb")
 
-[node name="WeaponAdder" type="TextureButton" parent="Control" index="1"]
+[node name="WeaponsVSlider" type="VSlider" parent="Control" index="1"]
 layout_mode = 0
-offset_left = -104.0
-offset_top = -1.0
-offset_right = 152.0
-offset_bottom = 255.0
-scale = Vector2(0.25, 0.25)
-texture_normal = ExtResource("2_myli5")
-texture_pressed = ExtResource("3_843yk")
+offset_left = -96.0
+offset_top = -114.0
+offset_right = -46.0
+offset_bottom = 64.0
+theme_override_icons/grabber = ExtResource("4_4kcdb")
+theme_override_icons/grabber_highlight = ExtResource("4_4kcdb")
 
-[node name="ShieldsAdder" type="TextureButton" parent="Control" index="2"]
+[node name="ShieldsVSlider" type="VSlider" parent="Control" index="2"]
 layout_mode = 0
-offset_left = -32.0
-offset_right = 224.0
-offset_bottom = 256.0
-scale = Vector2(0.25, 0.25)
-texture_normal = ExtResource("2_myli5")
-texture_pressed = ExtResource("3_843yk")
+offset_left = -25.0
+offset_top = -114.0
+offset_right = 25.0
+offset_bottom = 64.0
+theme_override_icons/grabber = ExtResource("4_4kcdb")
+theme_override_icons/grabber_highlight = ExtResource("4_4kcdb")
 
-[node name="EngineAdder" type="TextureButton" parent="Control" index="3"]
+[node name="EngineVSlider" type="VSlider" parent="Control" index="3"]
 layout_mode = 0
-offset_left = 40.0
-offset_right = 296.0
-offset_bottom = 256.0
-scale = Vector2(0.25, 0.25)
-texture_normal = ExtResource("2_myli5")
-texture_pressed = ExtResource("3_843yk")
+offset_left = 47.0
+offset_top = -114.0
+offset_right = 97.0
+offset_bottom = 64.0
+theme_override_icons/grabber = ExtResource("4_4kcdb")
+theme_override_icons/grabber_highlight = ExtResource("4_4kcdb")
 
-[node name="LifeSupportAdder" type="TextureButton" parent="Control" index="4"]
+[node name="LifeSupportVSlider" type="VSlider" parent="Control" index="4"]
 layout_mode = 0
-offset_left = 113.0
-offset_top = 2.0
-offset_right = 369.0
-offset_bottom = 258.0
-scale = Vector2(0.25, 0.25)
-texture_normal = ExtResource("2_myli5")
-texture_pressed = ExtResource("3_843yk")
+offset_left = 120.0
+offset_top = -114.0
+offset_right = 170.0
+offset_bottom = 64.0
+theme_override_icons/grabber = ExtResource("4_4kcdb")
+theme_override_icons/grabber_highlight = ExtResource("4_4kcdb")
 
 [node name="Icons" type="Node2D" parent="." index="2"]
-position = Vector2(0, -148)
+position = Vector2(0, -16)
 
 [node name="SensorsIcon" type="Sprite2D" parent="Icons" index="0"]
 position = Vector2(-144, 110)
@@ -99,8 +100,8 @@ texture = ExtResource("4_4pq0l")
 region_enabled = true
 region_rect = Rect2(0, 0, 100, 100)
 
-[connection signal="pressed" from="Control/SensorAdder" to="." method="_on_texture_button_pressed"]
-[connection signal="pressed" from="Control/WeaponAdder" to="." method="_on_weapon_adder_pressed"]
-[connection signal="pressed" from="Control/ShieldsAdder" to="." method="_on_shields_adder_pressed"]
-[connection signal="pressed" from="Control/EngineAdder" to="." method="_on_engine_adder_pressed"]
-[connection signal="pressed" from="Control/LifeSupportAdder" to="." method="_on_life_support_adder_pressed"]
+[connection signal="drag_ended" from="Control/SensorsVSlider" to="." method="_on_sensors_v_slider_drag_ended"]
+[connection signal="drag_ended" from="Control/WeaponsVSlider" to="." method="_on_weapons_v_slider_drag_ended"]
+[connection signal="drag_ended" from="Control/ShieldsVSlider" to="." method="_on_shields_v_slider_drag_ended"]
+[connection signal="drag_ended" from="Control/EngineVSlider" to="." method="_on_engine_v_slider_drag_ended"]
+[connection signal="drag_ended" from="Control/LifeSupportVSlider" to="." method="_on_life_support_v_slider_drag_ended"]
