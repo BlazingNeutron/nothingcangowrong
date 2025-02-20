@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxmr110ny0kxe"]
+
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_a8w4i"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rqp8a"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f213i"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_a8w4i")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="StartGameButton" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_rqp8a")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_f213i")
+text = "Start"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/StartGameButton" to="." method="_on_start_game_button_pressed"]

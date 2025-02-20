@@ -1,6 +1,6 @@
 extends Control
 
-signal overlay_animation_complete
+signal tutorial_overlay_complete
 
 @onready var animation_player: AnimationPlayer = $ColorRect/AnimationPlayer
 

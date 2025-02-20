@@ -36,11 +36,12 @@ position = Vector2(-980, 396)
 self_modulate = Color(0.282353, 0.945098, 0.560784, 1)
 position = Vector2(-6, -430)
 
-[node name="Overlay" parent="." instance=ExtResource("1_y8e0b")]
+[node name="TutorialOverlay" parent="." instance=ExtResource("1_y8e0b")]
 process_mode = 3
 visible = false
 
 [node name="WormholeOverlay" parent="." instance=ExtResource("10_847ua")]
+visible = false
 offset_left = -1280.0
 offset_top = -720.0
 offset_right = 1280.0

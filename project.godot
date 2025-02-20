@@ -11,8 +11,9 @@ config_version=5
 [application]
 
 config/name="NothingCanGoWrong"
-run/main_scene="res://scenes/Game.tscn"
+run/main_scene="res://scenes/MainMenu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
+boot_splash/bg_color=Color(0.0414716, 0.208824, 0.109827, 1)
 config/icon="res://icon.svg"
 
 [autoload]
