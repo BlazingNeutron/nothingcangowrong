@@ -12,9 +12,9 @@ var messages = [
 	[10, "red]Captain", "I forgot to mention that we have a new staff member... I suppose that is the first thing to ever go wrong...", false],
 	[20, "red]Captain", "Everyone please welcome our new engineer!", false],
 	[25, "blue]Supervisor", "Hey noob welcome aboard. I will be busy doing reports today, but just know that you have to pay attention to the control panel and I am sure you will figure it out.", false],
-	[35, "blue]Supervisor", "Ok, ok… I guess one thing to remember is you will need to keep an eye on the power output to the system core and to the sensors. All of the other systems should be running on a surplus of fuel for about the first day after departure.", true],
-	[45, "blue]Supervisor", "I know you already know this, but this model of warp engine will actually implode from dark matter ionization if the core power gauge ever drops to 0. ", false],
-	[55, "blue]Supervisor", "I don’t know who designs these things, honestly... Good luck!", false]
+	[35, "blue]Supervisor", "Ok, ok... I guess one thing to remember is you will need to keep an eye on the power output to the system core and to the sensors. All of the other systems should be running on a surplus of fuel for about the first day after departure.", true],
+	[45, "blue]Supervisor", "I know you already know this, but this model of warp engine will actually implode from dark matter ionization if the core power gauge ever drops to 0.", false],
+	[55, "blue]Supervisor", "I don't know who designs these things, honestly... Good luck!", false]
 ]
 
 # Called when the node enters the scene tree for the first time.

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b2hg70jmfdo10"]
+[gd_scene load_steps=16 format=3 uid="uid://b2hg70jmfdo10"]
 
 [ext_resource type="Script" path="res://scripts/gamenode.gd" id="1_3c815"]
 [ext_resource type="PackedScene" uid="uid://daqqsc7gij321" path="res://scenes/MainPanel.tscn" id="1_k1nbn"]
@@ -7,6 +7,30 @@
 [ext_resource type="PackedScene" uid="uid://cgly5le8ow085" path="res://scenes/panels/chat.tscn" id="3_ed17f"]
 [ext_resource type="PackedScene" uid="uid://bnr8tteeo0epi" path="res://scenes/panels/energy-controls-panel.tscn" id="4_rlqnx"]
 [ext_resource type="AudioStream" uid="uid://buev7vohdepek" path="res://assets/sounds/One Cosmos  Royalty Free Sci-Fi Background Music (No Copyright).mp3" id="5_dufet"]
+[ext_resource type="Shader" path="res://scripts/lightningball.gdshader" id="8_hmr7b"]
+
+[sub_resource type="Gradient" id="Gradient_xoeuq"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_b03k5"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_lpql0"]
+color_ramp = SubResource("Gradient_xoeuq")
+noise = SubResource("FastNoiseLite_b03k5")
+
+[sub_resource type="Gradient" id="Gradient_ncppr"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_5vklf"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_74jay"]
+color_ramp = SubResource("Gradient_ncppr")
+noise = SubResource("FastNoiseLite_5vklf")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s7ryc"]
+shader = ExtResource("8_hmr7b")
+shader_parameter/brightness = 2.5
+shader_parameter/time_scale = 1.0
+shader_parameter/noise = SubResource("NoiseTexture2D_lpql0")
+shader_parameter/noise2 = SubResource("NoiseTexture2D_74jay")
 
 [node name="Game" type="Node2D"]
 process_mode = 1
@@ -23,7 +47,8 @@ position = Vector2(962, 400)
 [node name="EnergyIndicatorsPanel" parent="MainPanel" instance=ExtResource("3_1efqc")]
 position = Vector2(-986, -508)
 
-[node name="Panel" parent="MainPanel" instance=ExtResource("4_rlqnx")]
+[node name="EnergyInputPanel" parent="MainPanel" instance=ExtResource("4_rlqnx")]
+position = Vector2(-983, -241)
 
 [node name="Overlay" parent="." instance=ExtResource("1_y8e0b")]
 process_mode = 3
@@ -34,3 +59,15 @@ process_mode = 3
 stream = ExtResource("5_dufet")
 autoplay = true
 bus = &"Music"
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+material = SubResource("ShaderMaterial_s7ryc")
+layout_mode = 0
+offset_right = 167.0
+offset_bottom = 160.0
