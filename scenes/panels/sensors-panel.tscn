@@ -1,20 +1,188 @@
-[gd_scene load_steps=4 format=3 uid="uid://dum6vcbekxohf"]
+[gd_scene load_steps=16 format=3 uid="uid://dum6vcbekxohf"]
 
 [ext_resource type="PackedScene" uid="uid://dmpkbdyoo1qvm" path="res://scenes/panels/Panel.tscn" id="1_qaxki"]
+[ext_resource type="Texture2D" uid="uid://df80lye4fhuxh" path="res://assets/images/green-button-released.png" id="2_b1xp2"]
 [ext_resource type="Texture2D" uid="uid://cxbns01ioc53p" path="res://assets/images/chat-screen.png" id="2_ky8v6"]
 [ext_resource type="Texture2D" uid="uid://dq0caxvdica8y" path="res://assets/images/starfield.png" id="3_0et30"]
+[ext_resource type="Texture2D" uid="uid://dvyvs1m8ebex3" path="res://assets/images/green-button-pressed.png" id="3_768ae"]
+[ext_resource type="Texture2D" uid="uid://do0c43oyqu6l8" path="res://assets/images/green-arrow-button-normal.png" id="4_1kkwq"]
+[ext_resource type="Texture2D" uid="uid://bre64jao2wg1u" path="res://assets/images/sensor-claw.png" id="4_m4i82"]
+[ext_resource type="Texture2D" uid="uid://djfja02mcgx2s" path="res://assets/images/sensor-follow.png" id="4_s4gj8"]
+[ext_resource type="Texture2D" uid="uid://bavkesbajmjcd" path="res://assets/images/green-arrow-button-pressed.png" id="5_sawmy"]
+
+[sub_resource type="Animation" id="Animation_k2o2n"]
+resource_name = "claw_blinker"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.54902), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_24npa"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.54902)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cxbnt"]
+_data = {
+"RESET": SubResource("Animation_24npa"),
+"claw_blinker": SubResource("Animation_k2o2n")
+}
+
+[sub_resource type="Animation" id="Animation_hy3ul"]
+resource_name = "blink"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_cnjio"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ix1ek"]
+_data = {
+"RESET": SubResource("Animation_cnjio"),
+"blink": SubResource("Animation_hy3ul")
+}
 
 [node name="Panel" instance=ExtResource("1_qaxki")]
 
 [node name="Background" parent="." index="0"]
 region_rect = Rect2(0, 496, 418, 496)
 
-[node name="Screen" type="Sprite2D" parent="." index="1"]
+[node name="CloseClampButton" type="TextureButton" parent="." index="1"]
+offset_left = -39.0
+offset_top = 162.0
+offset_right = 217.0
+offset_bottom = 418.0
+scale = Vector2(0.3, 0.3)
+texture_normal = ExtResource("2_b1xp2")
+texture_pressed = ExtResource("3_768ae")
+
+[node name="LeftButton" type="TextureButton" parent="." index="2"]
+offset_left = -138.0
+offset_top = 159.0
+offset_right = 112.0
+offset_bottom = 409.0
+scale = Vector2(0.3, 0.3)
+texture_normal = ExtResource("4_1kkwq")
+texture_pressed = ExtResource("5_sawmy")
+flip_h = true
+
+[node name="RightButton" type="TextureButton" parent="." index="3"]
+offset_left = 65.0
+offset_top = 159.0
+offset_right = 315.0
+offset_bottom = 409.0
+scale = Vector2(0.3, 0.3)
+texture_normal = ExtResource("4_1kkwq")
+texture_pressed = ExtResource("5_sawmy")
+
+[node name="SpaceScreen" type="Node2D" parent="." index="4"]
+clip_children = 1
+
+[node name="Screen" type="Sprite2D" parent="SpaceScreen" index="0"]
 clip_children = 2
+position = Vector2(0, -13)
 texture = ExtResource("2_ky8v6")
 
-[node name="Sprite2D" type="Sprite2D" parent="Screen" index="0"]
-modulate = Color(1, 1, 1, 0.411765)
+[node name="Space" type="Sprite2D" parent="SpaceScreen" index="1"]
+modulate = Color(1, 1, 1, 0.517647)
+position = Vector2(0, -12)
 texture = ExtResource("3_0et30")
 region_enabled = true
-region_rect = Rect2(0, 0, 348, 285)
+region_rect = Rect2(0, 0, 357, 308)
+
+[node name="SpaceMask" type="Sprite2D" parent="SpaceScreen" index="2"]
+clip_children = 1
+position = Vector2(0, -12)
+texture = ExtResource("3_0et30")
+region_enabled = true
+region_rect = Rect2(0, 0, 357, 308)
+
+[node name="Claws" type="Node2D" parent="SpaceScreen/SpaceMask" index="0"]
+modulate = Color(1, 1, 1, 0.54902)
+clip_children = 1
+position = Vector2(0, -1)
+
+[node name="TopClaw" type="Sprite2D" parent="SpaceScreen/SpaceMask/Claws" index="0"]
+position = Vector2(0, -155)
+texture = ExtResource("4_m4i82")
+region_enabled = true
+region_rect = Rect2(78, 84, 94, 169)
+
+[node name="BottomClaw" type="Sprite2D" parent="SpaceScreen/SpaceMask/Claws" index="1"]
+clip_children = 1
+position = Vector2(0, 155)
+texture = ExtResource("4_m4i82")
+flip_v = true
+region_enabled = true
+region_rect = Rect2(78, 84, 94, 169)
+
+[node name="ClawBlinker" type="AnimationPlayer" parent="SpaceScreen/SpaceMask/Claws" index="2"]
+libraries = {
+"": SubResource("AnimationLibrary_cxbnt")
+}
+autoplay = "claw_blinker"
+
+[node name="Blinkers" type="Node2D" parent="SpaceScreen/SpaceMask" index="1"]
+modulate = Color(1, 1, 1, 0)
+clip_children = 2
+position = Vector2(0, -1)
+
+[node name="RightArrows" type="Sprite2D" parent="SpaceScreen/SpaceMask/Blinkers" index="0"]
+position = Vector2(157, 1)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("4_s4gj8")
+
+[node name="LeftArrows" type="Sprite2D" parent="SpaceScreen/SpaceMask/Blinkers" index="1"]
+position = Vector2(-157, 1)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("4_s4gj8")
+flip_h = true
+
+[node name="BlinkPlayer" type="AnimationPlayer" parent="SpaceScreen/SpaceMask/Blinkers" index="2"]
+root_node = NodePath("../RightArrows")
+libraries = {
+"": SubResource("AnimationLibrary_ix1ek")
+}
+autoplay = "blink"
