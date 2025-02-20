@@ -13,6 +13,7 @@ process_mode = 1
 script = ExtResource("1_3c815")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.45, 0.45)
 
 [node name="MainPanel" parent="." instance=ExtResource("1_k1nbn")]
 
