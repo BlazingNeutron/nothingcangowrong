@@ -6,6 +6,33 @@ extends "res://scripts/panel.gd"
 @onready var engine_v_slider: VSlider = $Control/EngineVSlider
 @onready var life_support_v_slider: VSlider = $Control/LifeSupportVSlider
 
+func _ready() -> void:
+	Ship.connect("sensors_energy_changed", on_sensors_energy_changed)
+	on_sensors_energy_changed()
+	Ship.connect("weapons_energy_changed", on_weapons_energy_changed)
+	on_weapons_energy_changed()
+	Ship.connect("shields_energy_changed", on_shields_energy_changed)
+	on_shields_energy_changed()
+	Ship.connect("engines_energy_changed", on_engines_energy_changed)
+	on_engines_energy_changed()
+	Ship.connect("lifesupport_energy_changed", on_life_support_energy_changed)
+	on_life_support_energy_changed()
+
+func on_sensors_energy_changed() -> void:
+	sensors_v_slider.value = Ship.sensors_energy
+
+func on_weapons_energy_changed() -> void:
+	weapons_v_slider.value = Ship.weapons_energy
+
+func on_shields_energy_changed() -> void:
+	shields_v_slider.value = Ship.shields_energy
+
+func on_engines_energy_changed() -> void:
+	engine_v_slider.value = Ship.engines_energy
+
+func on_life_support_energy_changed() -> void:
+	life_support_v_slider.value = Ship.life_support_energy
+
 func _on_sensors_v_slider_drag_ended(value_changed: bool) -> void:
 	if value_changed:
 		Ship.sensors_energy = sensors_v_slider.value

@@ -59,4 +59,4 @@ func _ready() -> void:
 	recalc_core()
 
 func recalc_core() -> void:
-	core_energy = 100 - sensors_energy - weapons_energy - shields_energy - engines_energy - life_support_energy
+	core_energy = 100 - (sensors_energy/2) - (weapons_energy/3) - shields_energy - (engines_energy/2) - (life_support_energy/10)
