@@ -1,0 +1,41 @@
+[gd_scene load_steps=12 format=3 uid="uid://bta26pmhaol44"]
+
+[ext_resource type="Shader" path="res://scripts/lightningball.gdshader" id="1_y2iyy"]
+
+[sub_resource type="Gradient" id="Gradient_2jj2m"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_50smt"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3av5w"]
+color_ramp = SubResource("Gradient_2jj2m")
+noise = SubResource("FastNoiseLite_50smt")
+
+[sub_resource type="Gradient" id="Gradient_7qvov"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_2783d"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_c3y6u"]
+color_ramp = SubResource("Gradient_7qvov")
+noise = SubResource("FastNoiseLite_2783d")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q8e5i"]
+shader = ExtResource("1_y2iyy")
+shader_parameter/brightness = 2.5
+shader_parameter/time_scale = 1.0
+shader_parameter/noise = SubResource("NoiseTexture2D_3av5w")
+shader_parameter/noise2 = SubResource("NoiseTexture2D_c3y6u")
+
+[sub_resource type="Gradient" id="Gradient_bwdye"]
+colors = PackedColorArray(0, 0, 0, 1, 1, 0.12549, 0.133333, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_0a6jg"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ia2ul"]
+width = 25
+height = 25
+color_ramp = SubResource("Gradient_bwdye")
+noise = SubResource("FastNoiseLite_0a6jg")
+
+[node name="UnstableReaction" type="Sprite2D"]
+material = SubResource("ShaderMaterial_q8e5i")
+texture = SubResource("NoiseTexture2D_ia2ul")

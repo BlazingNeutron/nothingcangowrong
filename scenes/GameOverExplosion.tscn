@@ -44,7 +44,11 @@ animations = [{
 [node name="GameOverExplosion" type="Node2D"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -166)
 sprite_frames = SubResource("SpriteFrames_lcam8")
 autoplay = "default"
 frame = 7
 frame_progress = 1.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.2, 0.2)

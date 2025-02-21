@@ -19,7 +19,6 @@ var objects_found = 0
 func _ready() -> void:
 	randomize()
 	Game.connect("sensor_sweep_start", _on_sensor_sweep_start)
-	_on_sensor_sweep_start()
 
 func _on_sensor_sweep_start() -> void:
 	sensor_sweep_started = true

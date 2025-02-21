@@ -1,0 +1,56 @@
+extends "res://scripts/panel.gd"
+
+signal core_stabilization_complete
+
+@onready var unstable_reactions: Node2D = $UnstableReactions
+@onready var spawn_timer: Timer = $UnstableReactions/SpawnTimer
+
+var unstable_reaction = preload("res://scenes/unstable_reaction.tscn")
+var unstable_reaction_elements = []
+var destabilization_started = false
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	randomize()
+	Game.connect("core_destabilization_started", _on_core_destabilization_started)
+	_on_core_destabilization_started()
+
+func _on_core_destabilization_started() -> void:
+	destabilization_started = true
+	spawn_timer.start()
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	if destabilization_started:
+		for element in unstable_reaction_elements:
+			var moveX = randi_range(-10, 10)
+			var moveY = randi_range(-10, 10)
+			var newPosX = element.position.x + moveX
+			if newPosX > 75:
+				newPosX = 75
+			if newPosX < -75:
+				newPosX = -75
+			var newPosY = element.position.y + moveY
+			if newPosY > 75:
+				newPosY = 75
+			if newPosY < -75:
+				newPosY = -75
+			element.position.x = newPosX
+			element.position.y = newPosY
+
+func _on_spawn_timer_timeout() -> void:
+	if unstable_reaction_elements.size() == 10:
+		get_tree().change_scene_to_file("res://scenes/GameOverExplosion.tscn")
+	var posY = randi_range(-50, 50)
+	var posX = randi_range(-50, 50)
+	var new_element = unstable_reaction.instantiate()
+	new_element.position.x = posX
+	new_element.position.y = posY
+	unstable_reactions.add_child(new_element)
+	unstable_reaction_elements.push_back(new_element)
+
+func _on_discharge_button_pressed() -> void:
+	while unstable_reaction_elements.size() > 0:
+		var element = unstable_reaction_elements.pop_front()
+		element.queue_free()
+	Ship.energy_drain()

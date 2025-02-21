@@ -1,7 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://dau8e4lmba7jb"]
+[gd_scene load_steps=16 format=3 uid="uid://dau8e4lmba7jb"]
 
 [ext_resource type="PackedScene" uid="uid://dmpkbdyoo1qvm" path="res://scenes/panels/Panel.tscn" id="1_5sxin"]
 [ext_resource type="Shader" path="res://scripts/lightningball.gdshader" id="2_gfb1n"]
+[ext_resource type="Script" path="res://scripts/core_panel.gd" id="2_qfmuh"]
+[ext_resource type="Texture2D" uid="uid://df80lye4fhuxh" path="res://assets/images/green-button-released.png" id="3_rr65i"]
+[ext_resource type="Texture2D" uid="uid://dvyvs1m8ebex3" path="res://assets/images/green-button-pressed.png" id="4_u6ou3"]
 
 [sub_resource type="Gradient" id="Gradient_g58vn"]
 
@@ -32,14 +35,35 @@ colors = PackedColorArray(0, 0, 0, 1, 0.282353, 0.945098, 0.560784, 1)
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_x28or"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_wwlop"]
+width = 420
+height = 420
 color_ramp = SubResource("Gradient_7wjmv")
 noise = SubResource("FastNoiseLite_x28or")
 
-[node name="Panel" instance=ExtResource("1_5sxin")]
+[node name="CorePanel" instance=ExtResource("1_5sxin")]
+script = ExtResource("2_qfmuh")
 
 [node name="Background" parent="." index="0"]
 region_rect = Rect2(0, 496, 418, 496)
 
-[node name="Sprite2D" type="Sprite2D" parent="." index="1"]
+[node name="CoreReaction" type="Sprite2D" parent="." index="1"]
 material = SubResource("ShaderMaterial_i52o1")
+position = Vector2(0, -54)
 texture = SubResource("NoiseTexture2D_wwlop")
+
+[node name="DischargeButton" type="TextureButton" parent="." index="2"]
+offset_left = -51.0
+offset_top = 118.0
+offset_right = 205.0
+offset_bottom = 374.0
+scale = Vector2(0.4, 0.4)
+texture_normal = ExtResource("3_rr65i")
+texture_pressed = ExtResource("4_u6ou3")
+
+[node name="UnstableReactions" type="Node2D" parent="." index="3"]
+
+[node name="SpawnTimer" type="Timer" parent="UnstableReactions" index="0"]
+wait_time = 2.0
+
+[connection signal="pressed" from="DischargeButton" to="." method="_on_discharge_button_pressed"]
+[connection signal="timeout" from="UnstableReactions/SpawnTimer" to="." method="_on_spawn_timer_timeout"]

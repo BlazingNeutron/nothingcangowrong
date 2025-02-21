@@ -50,6 +50,7 @@ var life_support_energy : int = 10 :
 		emit_signal("lifesupport_energy_changed")
 		recalc_core()
 var core_warning = false
+var timer : Timer = null
 
 func _ready() -> void:
 	emit_signal("sensors_energy_changed")
@@ -67,3 +68,15 @@ func recalc_core() -> void:
 	if core_energy <= 0:
 		core_warning = true
 		emit_signal("core_energy_warning")
+
+func energy_drain() -> void:
+	var old_core_energy = core_energy
+	sensors_energy -= 10
+	weapons_energy -= 10
+	shields_energy -= 10
+	engines_energy -= 10
+	life_support_energy -= 5
+	core_energy -= 25
+
+func energy_restored() -> void:
+	recalc_core()

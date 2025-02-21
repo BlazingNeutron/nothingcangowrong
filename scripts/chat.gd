@@ -27,7 +27,7 @@ func _on_next_message_timeout() -> void:
 	chat_output.append_text("<[i][color=" + messages[message_index][1] + "[/color][/i]>:\n")
 	chat_output.append_text(messages[message_index][2]+"\n")
 	if messages[message_index][3]:
-		Game.start_tutorial_overlay()
+		Game.fire_event("tutorial_overlay_start")
 	
 	message_index += 1
 	if message_index < messages.size():
