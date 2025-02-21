@@ -58,5 +58,6 @@ process_mode = 3
 stream = ExtResource("5_dufet")
 autoplay = true
 bus = &"Music"
+parameters/looping = true
 
 [node name="Story" parent="." instance=ExtResource("11_tc4cf")]
