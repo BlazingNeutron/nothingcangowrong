@@ -21,20 +21,25 @@ zoom = Vector2(0.45, 0.45)
 [node name="MainPanel" parent="." instance=ExtResource("1_k1nbn")]
 
 [node name="ChatPanel" parent="MainPanel" instance=ExtResource("3_ed17f")]
-position = Vector2(962, 400)
+position = Vector2(874, 286)
+scale = Vector2(1.5, 1.5)
 
 [node name="EnergyIndicatorsPanel" parent="MainPanel" instance=ExtResource("3_1efqc")]
-position = Vector2(-986, -508)
+position = Vector2(-860, -412)
+scale = Vector2(1.5, 1.5)
 
 [node name="EnergyInputPanel" parent="MainPanel" instance=ExtResource("4_rlqnx")]
-position = Vector2(-987, -179)
+position = Vector2(-172, -413)
+scale = Vector2(1.5, 1.5)
 
 [node name="CorePanel" parent="MainPanel" instance=ExtResource("6_8mw5w")]
-position = Vector2(-980, 396)
+position = Vector2(-860, 264)
+scale = Vector2(1.5, 1.5)
 
 [node name="SensorsPanel" parent="MainPanel" instance=ExtResource("7_o8pqt")]
 self_modulate = Color(0.282353, 0.945098, 0.560784, 1)
-position = Vector2(-6, -430)
+position = Vector2(-161, 265)
+scale = Vector2(1.5, 1.5)
 
 [node name="TutorialOverlay" parent="." instance=ExtResource("1_y8e0b")]
 process_mode = 3

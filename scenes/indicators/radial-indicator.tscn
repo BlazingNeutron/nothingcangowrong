@@ -1,9 +1,47 @@
-[gd_scene load_steps=5 format=3 uid="uid://c48p75mcm25jp"]
+[gd_scene load_steps=9 format=3 uid="uid://c48p75mcm25jp"]
 
 [ext_resource type="Script" path="res://scripts/indicators/radial-indicator.gd" id="1_tm44i"]
 [ext_resource type="Texture2D" uid="uid://cchqaegl2esho" path="res://assets/images/radial-indicator-mask.png" id="2_vuftt"]
 [ext_resource type="Texture2D" uid="uid://ceg0qx1qgbcb0" path="res://assets/images/rg-radial-indicator.png" id="3_7ypyw"]
 [ext_resource type="Texture2D" uid="uid://cfbluitthtnc3" path="res://assets/images/radial-indicator-frame.png" id="4_rcvod"]
+[ext_resource type="Texture2D" uid="uid://boumm78jaqrmn" path="res://assets/images/warning-sign.png" id="5_jp3e7"]
+
+[sub_resource type="Animation" id="Animation_vp6vi"]
+resource_name = "warning_flash"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4m5d1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gxup6"]
+_data = {
+"RESET": SubResource("Animation_4m5d1"),
+"warning_flash": SubResource("Animation_vp6vi")
+}
 
 [node name="RadialIndicator" type="Node2D"]
 script = ExtResource("1_tm44i")
@@ -22,3 +60,12 @@ region_rect = Rect2(0, 0, 250, 125)
 
 [node name="FrameSprite" type="Sprite2D" parent="."]
 texture = ExtResource("4_rcvod")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+texture = ExtResource("5_jp3e7")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_gxup6")
+}

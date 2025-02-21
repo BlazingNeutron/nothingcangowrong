@@ -1,6 +1,8 @@
 extends Node2D
 
-signal overlay_start
+signal tutorial_overlay_start
+signal wormhole_start
+signal sensor_sweep_start
 
-func start_overlay() -> void:
-	emit_signal("overlay_start")
+func start_tutorial_overlay() -> void:
+	emit_signal("tutorial_overlay_start")

@@ -1,6 +1,7 @@
 extends Node
 
 signal core_energy_changed
+signal core_energy_warning
 signal weapons_energy_changed
 signal shields_energy_changed
 signal engines_energy_changed
@@ -48,6 +49,7 @@ var life_support_energy : int = 10 :
 		life_support_energy = clamp(value, 0, 100)
 		emit_signal("lifesupport_energy_changed")
 		recalc_core()
+var core_warning = false
 
 func _ready() -> void:
 	emit_signal("sensors_energy_changed")
@@ -60,3 +62,8 @@ func _ready() -> void:
 
 func recalc_core() -> void:
 	core_energy = 100 - (sensors_energy/2) - (weapons_energy/3) - shields_energy - (engines_energy/2) - (life_support_energy/10)
+	if core_warning and core_energy > 0:
+		core_warning = false
+	if core_energy <= 0:
+		core_warning = true
+		emit_signal("core_energy_warning")
