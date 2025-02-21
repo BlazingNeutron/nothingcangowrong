@@ -70,7 +70,7 @@ func recalc_core() -> void:
 		emit_signal("core_energy_warning")
 
 func energy_drain() -> void:
-	var old_core_energy = core_energy
+	#var old_core_energy = core_energy
 	sensors_energy -= 10
 	weapons_energy -= 10
 	shields_energy -= 10

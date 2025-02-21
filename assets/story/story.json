@@ -1,0 +1,16 @@
+{
+	"story":
+	[
+		{ "trigger": "timer", "time": 0, "chat": true, "color": "red", "name": "Captain", "message": "Good day crew! Today we will be launching into our new journey to Alpha Centauri and I expect a full report from all teams before end of day. Please keep in mind that this should be a fairly easy trip where nothing can possibly go wrong.", "events": false },
+		{ "trigger": "timer", "time": 10, "chat": true, "color": "red", "name": "Captain", "message": "I forgot to mention that we have a new staff member... I suppose that is the first thing to ever go wrong...", "events": false },
+		{ "trigger": "timer", "time": 10, "chat": true, "color": "red", "name": "Captain", "message": "Everyone please welcome our new engineer!", "events": false },
+		{ "trigger": "timer", "time": 5, "chat": true, "color": "blue", "name": "Supervisor", "message": "Hey noob welcome aboard. I will be busy doing reports today, but just know that you have to pay attention to the control panel and I am sure you will figure it out.", "events": ["tutorial_power_start"] },
+		{ "trigger": "timer", "time": 10, "chat": true, "color": "blue", "name": "Supervisor", "message": "Ok, ok... We first need to run a scan on this sector to make sure everything is safe. Of course, there won’t be anything but some space garbage, but run the scan anyway.", "events": ["tutorial_sensors_start", "sensor_sweep_start"]},
+		{ "trigger": "listener", "listen": "sensor_sweep_complete", "chat": true, "color": "blue", "name": "Supervisor", "message": "Uhh I think you found some kind of a wormhole! Come up to the bridge to have a look!", "events": false },
+		{ "trigger": "timer", "time": 10, "chat": true, "color": "green", "name": "Science Officer", "message": "Wormhole!! I lost my favorite pair of shoes in a wormhole and have been looking everywhere for them. Let’s head in and have a good look.", "events": false },
+		{ "trigger": "timer", "time": 10, "chat": true, "color": "blue", "name": "Supervisor", "message": "Actually, you should probably stay there, it seems the science team wants us to utilize the wormhole for some kind of science stuff... I am sure it will be fine though. What could go wrong?", "events": false },
+		{ "trigger": "timer", "time": 2, "chat": true, "events": ["tutorial_core_start", "wormhole_start"], "color": "blue", "name": "Supervisor", "message": "Oh, this is probably your first wormhole! All you have to do is know that the wormhole dark matter ionization affects the ship core causing it to drain it's power. Just use the protective ionizer panel to eliminate free dark matter ions and make sure you replace the core Polonium rods once the core power is fully drained."},
+		{ "trigger": "listener", "listen": "core_stabilization_complete", "chat": true, "color": "red", "name": "Captain", "message": "Amazing job by our Engineering team and their supervisor getting us through the treacherous wormhole safely! I do believe we should have a sensor sweep to see what is nearby.", "events": ["sensor_sweep2_start"] },
+		{ "trigger": "listener", "listen": "sensor_sweep2_complete", "chat": true, "color": "yellow", "name": "Security", "message": "That definitely looks like a dangerous alien ship! LET’S BLOW IT UP! Engage weapons and divert power to the shields!", "events": ["tutorial_weapons_start", "alien_fight_start"] }
+	]
+}

@@ -1,23 +1,22 @@
 extends "res://scripts/panel.gd"
 
-signal core_stabilization_complete
-
 @onready var unstable_reactions: Node2D = $UnstableReactions
 @onready var spawn_timer: Timer = $UnstableReactions/SpawnTimer
 
 var unstable_reaction = preload("res://scenes/unstable_reaction.tscn")
 var unstable_reaction_elements = []
 var destabilization_started = false
+var unstable_reactions_destroyed = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	randomize()
 	Game.connect("core_destabilization_started", _on_core_destabilization_started)
-	_on_core_destabilization_started()
 
 func _on_core_destabilization_started() -> void:
 	destabilization_started = true
 	spawn_timer.start()
+	unstable_reactions_destroyed = 0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -52,5 +51,18 @@ func _on_spawn_timer_timeout() -> void:
 func _on_discharge_button_pressed() -> void:
 	while unstable_reaction_elements.size() > 0:
 		var element = unstable_reaction_elements.pop_front()
+		unstable_reactions_destroyed += 1
 		element.queue_free()
+		if unstable_reactions_destroyed >= 28:
+			core_stabilized()
 	Ship.energy_drain()
+
+func core_stabilized() -> void:
+	destabilization_started = false
+	unstable_reactions_destroyed = 0
+	spawn_timer.stop()
+	Game.core_stabilized()
+	while unstable_reaction_elements.size() > 0:
+		var element = unstable_reaction_elements.pop_front()
+		unstable_reactions_destroyed += 1
+		element.queue_free()

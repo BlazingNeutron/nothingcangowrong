@@ -18,8 +18,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Ship="*res://scripts/ship.gd"
 Game="*res://scripts/game.gd"
+Ship="*res://scripts/ship.gd"
 
 [display]
 

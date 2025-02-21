@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b2hg70jmfdo10"]
+[gd_scene load_steps=12 format=3 uid="uid://b2hg70jmfdo10"]
 
 [ext_resource type="Script" path="res://scripts/gamenode.gd" id="1_3c815"]
 [ext_resource type="PackedScene" uid="uid://daqqsc7gij321" path="res://scenes/MainPanel.tscn" id="1_k1nbn"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dau8e4lmba7jb" path="res://scenes/panels/core-panel.tscn" id="6_8mw5w"]
 [ext_resource type="PackedScene" uid="uid://dum6vcbekxohf" path="res://scenes/panels/sensors-panel.tscn" id="7_o8pqt"]
 [ext_resource type="PackedScene" uid="uid://dbsqdqkgmr670" path="res://scenes/WormholeOverlay.tscn" id="10_847ua"]
+[ext_resource type="PackedScene" uid="uid://di1b1iqdvjsee" path="res://scenes/Story.tscn" id="11_tc4cf"]
 
 [node name="Game" type="Node2D"]
 process_mode = 1
@@ -57,3 +58,5 @@ process_mode = 3
 stream = ExtResource("5_dufet")
 autoplay = true
 bus = &"Music"
+
+[node name="Story" parent="." instance=ExtResource("11_tc4cf")]
