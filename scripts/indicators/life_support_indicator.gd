@@ -18,7 +18,7 @@ func _on_timer_timeout() -> void:
 		dangerzone += 1
 		if dangerzone == 2:
 			Game.life_support_warnings()
-		elif dangerzone == 5:
+		elif dangerzone == 8:
 			Game.life_support_death()
 	else:
 		dangerzone = 0

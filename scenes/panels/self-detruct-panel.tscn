@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://b17fp37qk2q6o"]
+
+[ext_resource type="PackedScene" uid="uid://dmpkbdyoo1qvm" path="res://scenes/panels/Panel.tscn" id="1_jnjgc"]
+[ext_resource type="Script" path="res://scripts/self-destruct.gd" id="2_bugsg"]
+[ext_resource type="Texture2D" uid="uid://vmad7k5gvye" path="res://assets/images/self-destruct_button.png" id="3_76e0p"]
+[ext_resource type="Texture2D" uid="uid://dvcpf3dnp8jbo" path="res://assets/images/self-destruct-button-pressed.png" id="4_mgryc"]
+
+[node name="Panel" instance=ExtResource("1_jnjgc")]
+script = ExtResource("2_bugsg")
+
+[node name="Background" parent="." index="0"]
+region_rect = Rect2(0, 496, 418, 496)
+
+[node name="TextureButton" type="TextureButton" parent="." index="1"]
+offset_left = -129.0
+offset_top = -126.0
+offset_right = 127.0
+offset_bottom = 130.0
+texture_normal = ExtResource("3_76e0p")
+texture_pressed = ExtResource("4_mgryc")
+
+[node name="RichTextLabel" parent="." index="2"]
+offset_left = -77.0
+offset_top = -235.0
+offset_right = 198.0
+offset_bottom = -195.0
+text = "Self-Destruction"
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

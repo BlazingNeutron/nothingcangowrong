@@ -84,5 +84,12 @@ wait_time = 2.0
 stream = ExtResource("7_k5824")
 bus = &"SFX"
 
+[node name="RichTextLabel" parent="." index="5"]
+offset_left = -67.0
+offset_top = -235.0
+offset_right = 208.0
+offset_bottom = -195.0
+text = "Core Monitoring"
+
 [connection signal="pressed" from="DischargeButton" to="." method="_on_discharge_button_pressed"]
 [connection signal="timeout" from="UnstableReactions/SpawnTimer" to="." method="_on_spawn_timer_timeout"]

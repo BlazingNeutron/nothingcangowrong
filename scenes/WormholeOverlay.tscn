@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://dbsqdqkgmr670"]
+[gd_scene load_steps=10 format=3 uid="uid://dbsqdqkgmr670"]
 
 [ext_resource type="Script" path="res://scripts/wormhole_overlay.gd" id="1_8klqr"]
 [ext_resource type="Shader" path="res://scripts/shaders/WormholeOverlay.gdshader" id="1_h67mp"]
 [ext_resource type="Shader" path="res://scripts/shaders/WormholeColourShader.gdshader" id="3_17rgn"]
+[ext_resource type="AudioStream" uid="uid://r3x32q3qy5xq" path="res://assets/sounds/Wormhole Animation.mp3" id="4_5b71n"]
 
 [sub_resource type="Gradient" id="Gradient_blg5l"]
 
@@ -48,7 +49,7 @@ mouse_filter = 2
 color = Color(0.309804, 0.309804, 0.309804, 0)
 
 [node name="WormholeEffect" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 4.0
 one_shot = true
 
 [node name="WormholeColourEffect" type="ColorRect" parent="."]
@@ -61,6 +62,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0.541176, 0.309804, 0.796078, 0.301961)
+color = Color(1, 1, 1, 0.168627)
+
+[node name="WormholeSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_5b71n")
+volume_db = -6.0
+bus = &"SFX"
+parameters/looping = false
 
 [connection signal="timeout" from="WormholeEffect" to="." method="overlay_complete"]

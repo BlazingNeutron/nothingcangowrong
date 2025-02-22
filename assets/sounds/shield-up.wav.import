@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://debabreqsixt2"
-path="res://.godot/imported/shield-up.wav-f6618986f4b9c1b8436ab9f14d759eff.sample"
+path="res://.godot/imported/shield-up.wav-1fdb0d7e4e1eb6dcc7d56f31447598ee.sample"
 
 [deps]
 
-source_file="res://assets/shield-up.wav"
-dest_files=["res://.godot/imported/shield-up.wav-f6618986f4b9c1b8436ab9f14d759eff.sample"]
+source_file="res://assets/sounds/shield-up.wav"
+dest_files=["res://.godot/imported/shield-up.wav-1fdb0d7e4e1eb6dcc7d56f31447598ee.sample"]
 
 [params]
 

@@ -1,5 +1,6 @@
 extends Node2D
 
+@onready var timer: Timer = $Timer
 @onready var value_sprite: Sprite2D = $ValueMask/ValueSprite
 @onready var system_drained_player: AudioStreamPlayer = $SystemDrainedPlayer
 
@@ -30,3 +31,6 @@ func _on_change(value) -> void:
 
 func _on_startup_timer_timeout() -> void:
 	unmute = true
+
+func _on_timer_timeout() -> void:
+	pass # Replace with function body.

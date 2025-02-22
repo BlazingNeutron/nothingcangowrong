@@ -7,6 +7,8 @@ extends "res://scripts/panel.gd"
 
 @onready var alien_fight_timer: Timer = $AlienFightTimer
 @onready var alien_shots_fired_timer: Timer = $AlienShotsFiredTimer
+@onready var shield_up_sound: AudioStreamPlayer = $ShieldUpSound
+@onready var shield_damage_sound: AudioStreamPlayer = $ShieldDamageSound
 
 var top = 25
 var right = 25
@@ -60,6 +62,7 @@ func _on_top_shield_restore_button_pressed() -> void:
 		return
 	if top == 100:
 		return
+	shield_up_sound.play()
 	top = clamp(top + 20, 0, 100)
 	update_top_shield()
 	Ship.shields_energy -= 5
@@ -70,6 +73,7 @@ func _on_right_shield_restore_button_pressed() -> void:
 		return
 	if right == 100:
 		return
+	shield_up_sound.play()
 	right = clamp(right + 20, 0, 100)
 	update_right_shield()
 	Ship.shields_energy -= 5
@@ -80,6 +84,7 @@ func _on_bottom_shield_restore_button_pressed() -> void:
 		return
 	if bottom == 100:
 		return
+	shield_up_sound.play()
 	bottom = clamp(bottom + 20, 0, 100)
 	update_bottom_shield()
 	Ship.shields_energy -= 5
@@ -90,12 +95,14 @@ func _on_left_shield_restore_button_pressed() -> void:
 		return
 	if left == 100:
 		return
+	shield_up_sound.play()
 	left = clamp(left + 20, 0, 100)
 	update_left_shield()
 	Ship.shields_energy -= 5
 
 func _on_alien_fight_start() -> void:
 	alien_fight_started = true
+	alien_shots_fired_timer.wait_time = 6
 	alien_shots_fired_timer.start()
 
 func _on_alien_fight_completed() -> void:
@@ -103,9 +110,11 @@ func _on_alien_fight_completed() -> void:
 	alien_shots_fired_timer.stop()
 
 func _on_alien_fight_timer_timeout() -> void:
+	alien_shots_fired_timer.stop()
 	Game.alien_fight_completed.emit()
 
 func _on_alien_shots_fired_timer_timeout() -> void:
+	shield_damage_sound.play()
 	var direction = randi_range(0, 4)
 	var damage = randi_range(1, 3)
 	if direction == 1:

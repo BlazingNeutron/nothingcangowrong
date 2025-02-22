@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b2hg70jmfdo10"]
+[gd_scene load_steps=16 format=3 uid="uid://b2hg70jmfdo10"]
 
 [ext_resource type="Script" path="res://scripts/gamenode.gd" id="1_3c815"]
 [ext_resource type="PackedScene" uid="uid://daqqsc7gij321" path="res://scenes/MainPanel.tscn" id="1_k1nbn"]
@@ -10,7 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://dau8e4lmba7jb" path="res://scenes/panels/core-panel.tscn" id="6_8mw5w"]
 [ext_resource type="PackedScene" uid="uid://dum6vcbekxohf" path="res://scenes/panels/sensors-panel.tscn" id="7_o8pqt"]
 [ext_resource type="PackedScene" uid="uid://ddacjsjtjlf46" path="res://scenes/panels/shields-panel.tscn" id="8_fh13f"]
+[ext_resource type="PackedScene" uid="uid://c7s0sdlmohi5g" path="res://scenes/panels/weapons-panel.tscn" id="9_qv3ku"]
 [ext_resource type="PackedScene" uid="uid://dbsqdqkgmr670" path="res://scenes/WormholeOverlay.tscn" id="10_847ua"]
+[ext_resource type="PackedScene" uid="uid://b17fp37qk2q6o" path="res://scenes/panels/self-detruct-panel.tscn" id="10_nddeg"]
 [ext_resource type="PackedScene" uid="uid://di1b1iqdvjsee" path="res://scenes/Story.tscn" id="11_tc4cf"]
 [ext_resource type="AudioStream" uid="uid://d0fc3ejtcgh4i" path="res://assets/sounds/ufo-start-up-68712.mp3" id="13_5xufl"]
 
@@ -24,29 +26,37 @@ zoom = Vector2(0.45, 0.45)
 [node name="MainPanel" parent="." instance=ExtResource("1_k1nbn")]
 
 [node name="ChatPanel" parent="MainPanel" instance=ExtResource("3_ed17f")]
-position = Vector2(874, 286)
-scale = Vector2(1.5, 1.5)
+position = Vector2(888, 269)
+scale = Vector2(1.3, 1.3)
 
 [node name="EnergyIndicatorsPanel" parent="MainPanel" instance=ExtResource("3_1efqc")]
-position = Vector2(-860, -412)
-scale = Vector2(1.5, 1.5)
+position = Vector2(-888, -420)
+scale = Vector2(1.3, 1.3)
 
 [node name="EnergyInputPanel" parent="MainPanel" instance=ExtResource("4_rlqnx")]
-position = Vector2(-172, -413)
-scale = Vector2(1.5, 1.5)
+position = Vector2(-295, -420)
+scale = Vector2(1.3, 1.3)
 
 [node name="CorePanel" parent="MainPanel" instance=ExtResource("6_8mw5w")]
-position = Vector2(-860, 264)
-scale = Vector2(1.5, 1.5)
+position = Vector2(-888, 269)
+scale = Vector2(1.3, 1.3)
 
 [node name="SensorsPanel" parent="MainPanel" instance=ExtResource("7_o8pqt")]
 self_modulate = Color(0.282353, 0.945098, 0.560784, 1)
-position = Vector2(-161, 265)
-scale = Vector2(1.5, 1.5)
+position = Vector2(-295, 269)
+scale = Vector2(1.3, 1.3)
 
-[node name="Panel" parent="MainPanel" instance=ExtResource("8_fh13f")]
-position = Vector2(873, -398)
-scale = Vector2(1.5, 1.5)
+[node name="ShieldsPanel" parent="MainPanel" instance=ExtResource("8_fh13f")]
+position = Vector2(888, -420)
+scale = Vector2(1.3, 1.3)
+
+[node name="WeaponsPanel" parent="MainPanel" instance=ExtResource("9_qv3ku")]
+position = Vector2(295, -420)
+scale = Vector2(1.3, 1.3)
+
+[node name="SelfDestructPanel" parent="MainPanel" instance=ExtResource("10_nddeg")]
+position = Vector2(295, 269)
+scale = Vector2(1.3, 1.3)
 
 [node name="TutorialOverlay" parent="." instance=ExtResource("1_y8e0b")]
 process_mode = 3

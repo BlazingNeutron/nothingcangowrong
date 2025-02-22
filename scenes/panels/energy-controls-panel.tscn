@@ -100,6 +100,13 @@ texture = ExtResource("4_4pq0l")
 region_enabled = true
 region_rect = Rect2(0, 0, 100, 100)
 
+[node name="RichTextLabel" parent="." index="3"]
+offset_left = -102.0
+offset_top = -143.0
+offset_right = 173.0
+offset_bottom = -103.0
+text = "Energy Flow Controllers"
+
 [connection signal="drag_ended" from="Control/SensorsVSlider" to="." method="_on_sensors_v_slider_drag_ended"]
 [connection signal="drag_ended" from="Control/WeaponsVSlider" to="." method="_on_weapons_v_slider_drag_ended"]
 [connection signal="drag_ended" from="Control/ShieldsVSlider" to="." method="_on_shields_v_slider_drag_ended"]

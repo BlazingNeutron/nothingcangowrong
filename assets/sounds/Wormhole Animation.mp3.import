@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://r3x32q3qy5xq"
+path="res://.godot/imported/Wormhole Animation.mp3-b8b231ce0cabe540858311a625991f7d.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/Wormhole Animation.mp3"
+dest_files=["res://.godot/imported/Wormhole Animation.mp3-b8b231ce0cabe540858311a625991f7d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

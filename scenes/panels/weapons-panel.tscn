@@ -1,0 +1,60 @@
+[gd_scene load_steps=7 format=3 uid="uid://c7s0sdlmohi5g"]
+
+[ext_resource type="PackedScene" uid="uid://dmpkbdyoo1qvm" path="res://scenes/panels/Panel.tscn" id="1_uwwkq"]
+[ext_resource type="Script" path="res://scripts/weapons-panel.gd" id="2_7dpph"]
+[ext_resource type="Texture2D" uid="uid://db4b2u6kvygsy" path="res://assets/images/weapon-black.png" id="3_0520g"]
+[ext_resource type="Texture2D" uid="uid://cm0uqpg1oiwyc" path="res://assets/images/redgreen-indicator.png" id="4_dfstr"]
+[ext_resource type="Texture2D" uid="uid://dyd7r5pvphw2m" path="res://assets/images/switch-up.png" id="5_xqpps"]
+[ext_resource type="Texture2D" uid="uid://c2n6274t1b6im" path="res://assets/images/switch-down.png" id="6_napee"]
+
+[node name="Panel" instance=ExtResource("1_uwwkq")]
+script = ExtResource("2_7dpph")
+
+[node name="Background" parent="." index="0"]
+region_rect = Rect2(0, 190, 418, 297)
+
+[node name="WeaponsSystems" type="Node2D" parent="." index="1"]
+position = Vector2(0, 12)
+scale = Vector2(0.9, 0.9)
+
+[node name="WeaponOutline" type="Sprite2D" parent="WeaponsSystems" index="0"]
+clip_children = 2
+position = Vector2(2, -45)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_0520g")
+
+[node name="WeaponFill" type="Sprite2D" parent="WeaponsSystems/WeaponOutline" index="0"]
+position = Vector2(-40, 791.111)
+scale = Vector2(8.5, 8.5)
+texture = ExtResource("4_dfstr")
+flip_v = true
+
+[node name="ToggleButton" type="TextureButton" parent="WeaponsSystems" index="1"]
+offset_left = -22.0
+offset_top = 69.0
+offset_right = 128.0
+offset_bottom = 219.0
+scale = Vector2(0.3, 0.3)
+toggle_mode = true
+texture_normal = ExtResource("5_xqpps")
+texture_pressed = ExtResource("6_napee")
+flip_h = true
+
+[node name="WeaponsFireSound" type="AudioStreamPlayer" parent="." index="2"]
+
+[node name="EnergyFillSound" type="AudioStreamPlayer" parent="." index="3"]
+
+[node name="ToggleSwitchSound" type="AudioStreamPlayer" parent="." index="4"]
+
+[node name="WeaponsFiringTimer" type="Timer" parent="." index="5"]
+
+[node name="WeaponsFillTimer" type="Timer" parent="." index="6"]
+
+[node name="RichTextLabel" parent="." index="7"]
+offset_left = -86.0
+offset_top = -138.0
+offset_right = 189.0
+offset_bottom = -98.0
+text = "Weapons Recharger"
+
+[connection signal="pressed" from="WeaponsSystems/ToggleButton" to="." method="_on_toggle_button_pressed"]

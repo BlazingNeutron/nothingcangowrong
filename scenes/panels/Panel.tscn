@@ -10,3 +10,17 @@ script = ExtResource("1_vpnri")
 texture = ExtResource("1_4hp5h")
 region_enabled = true
 region_rect = Rect2(0, 0, 418, 175)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -135.0
+offset_top = -80.0
+offset_right = 140.0
+offset_bottom = -40.0
+grow_horizontal = 2
+theme_override_colors/default_color = Color(0.282353, 0.945098, 0.560784, 1)
+theme_override_font_sizes/normal_font_size = 19
+text = "Title"
+fit_content = true

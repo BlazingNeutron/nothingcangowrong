@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://dud637wjgn7ht"
-path="res://.godot/imported/shield damage.wav-0dea4e3d2923a4c728375817882ca1c4.sample"
+path="res://.godot/imported/shield damage.wav-2d3b55bd737786af31fff7d4a9e2c965.sample"
 
 [deps]
 
-source_file="res://assets/shield damage.wav"
-dest_files=["res://.godot/imported/shield damage.wav-0dea4e3d2923a4c728375817882ca1c4.sample"]
+source_file="res://assets/sounds/shield damage.wav"
+dest_files=["res://.godot/imported/shield damage.wav-2d3b55bd737786af31fff7d4a9e2c965.sample"]
 
 [params]
 

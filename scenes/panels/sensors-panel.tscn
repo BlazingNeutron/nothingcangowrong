@@ -213,6 +213,13 @@ stream = ExtResource("13_37scc")
 volume_db = 5.0
 bus = &"SFX"
 
+[node name="RichTextLabel" parent="." index="6"]
+offset_left = -82.0
+offset_top = -239.0
+offset_right = 193.0
+offset_bottom = -199.0
+text = "Space Sensor Scanner"
+
 [connection signal="pressed" from="CloseClampButton" to="." method="_on_close_clamp_button_pressed"]
 [connection signal="pressed" from="LeftButton" to="." method="_on_left_button_pressed"]
 [connection signal="pressed" from="RightButton" to="." method="_on_right_button_pressed"]
