@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b2hg70jmfdo10"]
+[gd_scene load_steps=13 format=3 uid="uid://b2hg70jmfdo10"]
 
 [ext_resource type="Script" path="res://scripts/gamenode.gd" id="1_3c815"]
 [ext_resource type="PackedScene" uid="uid://daqqsc7gij321" path="res://scenes/MainPanel.tscn" id="1_k1nbn"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://buev7vohdepek" path="res://assets/sounds/One Cosmos  Royalty Free Sci-Fi Background Music (No Copyright).mp3" id="5_dufet"]
 [ext_resource type="PackedScene" uid="uid://dau8e4lmba7jb" path="res://scenes/panels/core-panel.tscn" id="6_8mw5w"]
 [ext_resource type="PackedScene" uid="uid://dum6vcbekxohf" path="res://scenes/panels/sensors-panel.tscn" id="7_o8pqt"]
+[ext_resource type="PackedScene" uid="uid://ddacjsjtjlf46" path="res://scenes/panels/shields-panel.tscn" id="8_fh13f"]
 [ext_resource type="PackedScene" uid="uid://dbsqdqkgmr670" path="res://scenes/WormholeOverlay.tscn" id="10_847ua"]
 [ext_resource type="PackedScene" uid="uid://di1b1iqdvjsee" path="res://scenes/Story.tscn" id="11_tc4cf"]
 
@@ -40,6 +41,10 @@ scale = Vector2(1.5, 1.5)
 [node name="SensorsPanel" parent="MainPanel" instance=ExtResource("7_o8pqt")]
 self_modulate = Color(0.282353, 0.945098, 0.560784, 1)
 position = Vector2(-161, 265)
+scale = Vector2(1.5, 1.5)
+
+[node name="Panel" parent="MainPanel" instance=ExtResource("8_fh13f")]
+position = Vector2(873, -398)
 scale = Vector2(1.5, 1.5)
 
 [node name="TutorialOverlay" parent="." instance=ExtResource("1_y8e0b")]
