@@ -39,3 +39,9 @@ texture = ExtResource("2_6qb1d")
 
 [node name="FrameSprite" type="Sprite2D" parent="."]
 texture = ExtResource("3_vg5nc")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

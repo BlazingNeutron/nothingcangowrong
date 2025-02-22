@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var value_sprite: Sprite2D = $ValueMask/ValueSprite
+@onready var timer: Timer = $Timer
 
 func _ready() -> void:
 	_on_change(_read_value())
@@ -22,3 +23,6 @@ func _pulse_animation() -> void:
 func _on_change(value) -> void:
 	_update_display(value)
 	_pulse_animation()
+
+func _on_timer_timeout() -> void:
+	pass # Replace with function body.

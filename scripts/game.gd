@@ -13,6 +13,9 @@ signal sensor_sweep2_start
 signal core_destabilization_started
 signal core_stabilization_complete
 signal chat_message(color, sender_name, message)
+signal life_support_warning
+signal game_over
+signal engine_warning
 
 var index = 0
 var game_story = null
@@ -37,3 +40,9 @@ func core_stabilized() -> void:
 
 func start_core_destabilization() -> void:
 	emit_signal("core_destabilization_started")
+
+func life_support_warnings() -> void:
+	emit_signal("life_support_warning")
+
+func life_support_death() -> void:
+	emit_signal("game_over")

@@ -7,6 +7,8 @@ var index = 0
 
 func _ready() -> void:
 	Game.connect("story_start", restart_game)
+	Game.connect("life_support_warning", life_support_warning)
+	Game.connect("engine_warning", engine_warning)
 	story_timer.connect("timeout", _on_next_message_timeout)
 	var file = FileAccess.get_file_as_string("res://assets/story/story.json")
 	game_story = JSON.parse_string(file)
@@ -33,3 +35,9 @@ func _on_next_message_timeout() -> void:
 		story_timer.start()
 	if game_story.story[index].trigger == "listener":
 		Game.connect(game_story.story[index].listen, _on_next_message_timeout)
+
+func life_support_warning() -> void:
+	Game.receive_chat_message("red", "Captain", "The air is getting a little thin up here!")
+
+func engine_warning() -> void:
+	Game.receive_chat_message("blue", "Supervisor", "We need more power to the engines!  We can't stop here!")

@@ -10,6 +10,7 @@ func _ready() -> void:
 	Game.connect("wormhole_start", _on_wormhole_start)
 	Game.connect("tutorial_overlay_start", _on_tutorial_overlay_start)
 	Game.connect("tutorial_overlay_complete", _on_tutorial_overlay_complete)
+	Game.connect("game_over", _on_game_over)
 	Game.start_story()
 
 func _on_tutorial_overlay_start() -> void:
@@ -23,3 +24,6 @@ func _on_wormhole_start() -> void:
 func _on_tutorial_overlay_complete() -> void:
 	tutorial_overlay.hide()
 	get_tree().paused = false
+
+func _on_game_over() -> void:
+	get_tree().change_scene_to_file("res://scenes/GameOverExplosion.tscn")
