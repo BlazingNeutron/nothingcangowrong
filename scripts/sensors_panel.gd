@@ -14,14 +14,21 @@ var next_space_object = 0
 var sensor_sweep_started = false
 var focus_amount = 10
 var objects_found = 0
+var alien_object = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	randomize()
 	Game.connect("sensor_sweep_start", _on_sensor_sweep_start)
+	Game.connect("sensor_sweep2_start", _on_sensor_sweep2_start)
 
 func _on_sensor_sweep_start() -> void:
 	sensor_sweep_started = true
+	show_next_space_object()
+
+func _on_sensor_sweep2_start() -> void:
+	sensor_sweep_started = true
+	alien_object = true
 	show_next_space_object()
 
 func reset_sensor_view() -> void:
@@ -35,11 +42,14 @@ func reset_sensor_view() -> void:
 
 func show_next_space_object() -> void:
 	reset_sensor_view()
-	var object_to_find = randi_range(1, 2)
-	if objects_found >= 4:
-		object_to_find = 0
-	sensor_object.show()
+	var object_to_find = randi_range(1, 4)
+	if alien_object:
+		object_to_find = 5
+	else:
+		if objects_found >= 4:
+			object_to_find = 0
 	sensor_object.region_rect.position.x = 100 * object_to_find
+	sensor_object.show()
 	var direction = randi_range(0, 1)
 	next_space_object = direction
 	if direction == 1:
@@ -51,6 +61,7 @@ func show_next_space_object() -> void:
 
 func _on_close_clamp_button_pressed() -> void:
 	if Ship.sensors_energy < 10:
+		Ship.sensors_energy = Ship.sensors_energy
 		return
 	if top_claw.position.y == -105:
 		top_claw.position.y = -155
@@ -65,15 +76,18 @@ func _on_close_clamp_button_pressed() -> void:
 		if focus_amount > 250:
 			objects_found += 1
 			tween.tween_property(sensor_object.material, "shader_parameter/amount", 10, 0.1)
+			reset_sensor_view()
 			if objects_found < 5:
-				reset_sensor_view()
 				show_next_space_object()
 			elif objects_found == 5:
 				Game.first_sensor_sweep_complete()
+			elif alien_object:
+				Game.second_sensor_sweep_complete()
 	Ship.sensors_energy -= 10
 
 func _on_left_button_pressed() -> void:
 	if Ship.sensors_energy < 5:
+		Ship.sensors_energy = Ship.sensors_energy
 		return
 	if sensor_sweep_started:
 		sensor_object.position.x += 50
@@ -85,6 +99,7 @@ func _on_left_button_pressed() -> void:
 
 func _on_right_button_pressed() -> void:
 	if Ship.sensors_energy < 5:
+		Ship.sensors_energy = Ship.sensors_energy
 		return
 	sensor_object.position.x -= 50
 	space.position.x -= 10

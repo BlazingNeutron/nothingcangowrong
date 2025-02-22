@@ -29,6 +29,9 @@ func receive_chat_message(color, sender_name, message) -> void:
 func first_sensor_sweep_complete() -> void:
 	emit_signal("sensor_sweep_complete")
 
+func second_sensor_sweep_complete() -> void:
+	emit_signal("sensor_sweep2_complete")
+
 func core_stabilized() -> void:
 	emit_signal("core_stabilization_complete")
 

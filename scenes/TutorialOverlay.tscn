@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c3qw8gw7xakwa"]
+[gd_scene load_steps=10 format=3 uid="uid://c3qw8gw7xakwa"]
 
 [ext_resource type="Script" path="res://scripts/tutorial_overlay.gd" id="1_8uwjq"]
 [ext_resource type="Shader" path="res://scripts/shaders/TutorialOverlay.gdshader" id="1_y7b67"]
@@ -55,6 +55,22 @@ _data = {
 "tutorial-focus": SubResource("Animation_2s7je")
 }
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ef1vw"]
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.8, 0.8, 0.8, 0.407843)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+expand_margin_left = 20.0
+expand_margin_top = 20.0
+expand_margin_right = 20.0
+expand_margin_bottom = 20.0
+shadow_offset = Vector2(-20, 10)
+
 [node name="Overlay" type="Control"]
 custom_minimum_size = Vector2(2560, 1440)
 layout_mode = 3
@@ -87,22 +103,30 @@ libraries = {
 }
 autoplay = "tutorial-focus"
 
-[node name="TutorialText" type="RichTextLabel" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -626.0
-offset_top = -522.0
-offset_right = -126.0
-offset_bottom = -22.0
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 673.0
+offset_bottom = 509.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ef1vw")
+
+[node name="TutorialText" type="RichTextLabel" parent="Panel"]
+layout_mode = 2
+offset_right = 673.0
+offset_bottom = 509.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/default_color = Color(0.282353, 0.945098, 0.560784, 1)
 theme_override_font_sizes/normal_font_size = 27
+text = "testf awefwae fawef ewgwgwa"
 fit_content = true
 scroll_active = false
 
-[connection signal="gui_input" from="ColorRect" to="." method="_on_color_rect_gui_input"]
+[node name="Button" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 527.0
+offset_top = 439.0
+offset_right = 634.0
+offset_bottom = 489.0
+text = "Continue"
+
+[connection signal="pressed" from="Panel/Button" to="." method="_on_button_pressed"]
