@@ -1,9 +1,9 @@
 extends "res://scripts/panel.gd"
 
-@onready var top_shield: Sprite2D = $Shields/TopShield
-@onready var right_shield: Sprite2D = $Shields/RightShield
-@onready var bottom_shield: Sprite2D = $Shields/BottomShield
-@onready var left_shield: Sprite2D = $Shields/LeftShield
+@onready var top_shield: Sprite2D = $Shields2/Shields/TopShield
+@onready var right_shield: Sprite2D = $Shields2/Shields/RightShield
+@onready var bottom_shield: Sprite2D = $Shields2/Shields/BottomShield
+@onready var left_shield: Sprite2D = $Shields2/Shields/LeftShield
 
 @onready var alien_fight_timer: Timer = $AlienFightTimer
 @onready var alien_shots_fired_timer: Timer = $AlienShotsFiredTimer
