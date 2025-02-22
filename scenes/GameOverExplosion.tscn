@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://irsd0yo8sd2s"]
+[gd_scene load_steps=11 format=3 uid="uid://irsd0yo8sd2s"]
 
+[ext_resource type="Script" path="res://scripts/game_over_explosion.gd" id="1_3mqpr"]
 [ext_resource type="Texture2D" uid="uid://cunv4xuvssuqn" path="res://assets/images/theend/frame03.png" id="1_ev4em"]
 [ext_resource type="Texture2D" uid="uid://b8fu6bf7p2ubk" path="res://assets/images/theend/frame04.png" id="2_j7t4u"]
 [ext_resource type="Texture2D" uid="uid://dkfqvechcopbx" path="res://assets/images/theend/frame05.png" id="3_gum85"]
@@ -42,13 +43,49 @@ animations = [{
 }]
 
 [node name="GameOverExplosion" type="Node2D"]
+script = ExtResource("1_3mqpr")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -166)
+position = Vector2(-129, -130)
 sprite_frames = SubResource("SpriteFrames_lcam8")
-autoplay = "default"
-frame = 7
-frame_progress = 1.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.2, 0.2)
+zoom = Vector2(0.5, 0.5)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4, 4)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RestartButton" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+text = "Restart"
+
+[node name="MainMenuButton" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+text = "Return to Main Menu"
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="Control/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
