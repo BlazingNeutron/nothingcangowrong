@@ -80,7 +80,16 @@ scale = Vector2(0.5, 0.5)
 texture_normal = ExtResource("5_cdmok")
 texture_pressed = ExtResource("6_avopi")
 
+[node name="AlienFightTimer" type="Timer" parent="." index="4"]
+wait_time = 15.0
+one_shot = true
+
+[node name="AlienShotsFiredTimer" type="Timer" parent="." index="5"]
+one_shot = true
+
 [connection signal="pressed" from="ShieldButtons/TopShieldRestoreButton" to="." method="_on_top_shield_restore_button_pressed"]
 [connection signal="pressed" from="ShieldButtons/RightShieldRestoreButton" to="." method="_on_right_shield_restore_button_pressed"]
 [connection signal="pressed" from="ShieldButtons/BottomShieldRestoreButton" to="." method="_on_bottom_shield_restore_button_pressed"]
 [connection signal="pressed" from="ShieldButtons/LeftShieldRestoreButton" to="." method="_on_left_shield_restore_button_pressed"]
+[connection signal="timeout" from="AlienFightTimer" to="." method="_on_alien_fight_timer_timeout"]
+[connection signal="timeout" from="AlienShotsFiredTimer" to="." method="_on_alien_shots_fired_timer_timeout"]

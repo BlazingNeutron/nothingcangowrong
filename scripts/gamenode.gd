@@ -7,10 +7,10 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#story.connect("tutorial_overlay_start", _on_tutorial_overlay_start)
-	Game.connect("wormhole_start", _on_wormhole_start)
-	Game.connect("tutorial_overlay_start", _on_tutorial_overlay_start)
-	Game.connect("tutorial_overlay_complete", _on_tutorial_overlay_complete)
-	Game.connect("game_over", _on_game_over)
+	Game.wormhole_start.connect(_on_wormhole_start)
+	Game.tutorial_overlay_start.connect(_on_tutorial_overlay_start)
+	Game.tutorial_overlay_complete.connect(_on_tutorial_overlay_complete)
+	Game.game_over.connect(_on_game_over)
 	Game.start_story()
 
 func _on_tutorial_overlay_start() -> void:

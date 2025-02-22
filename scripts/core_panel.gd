@@ -11,7 +11,7 @@ var unstable_reactions_destroyed = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	randomize()
-	Game.connect("core_destabilization_started", _on_core_destabilization_started)
+	Game.core_destabilization_started.connect(_on_core_destabilization_started)
 
 func _on_core_destabilization_started() -> void:
 	destabilization_started = true

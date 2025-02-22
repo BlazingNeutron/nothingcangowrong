@@ -13,6 +13,7 @@
 		{ "trigger": "timer", "time": 2, "chat": true, "events": false, "color": "blue", "name": "Supervisor", "message": "Oh, this is probably your first wormhole! All you have to do is know that the wormhole dark matter ionization affects the ship core causing it to drain it's power. Just use the protective ionizer panel to eliminate free dark matter ions and make sure you replace the core Polonium rods once the core power is fully drained." },
 		{ "trigger": "timer", "time": 5, "chat": false, "events": [ "wormhole_start" ] },
 		{ "trigger": "listener", "listen": "core_stabilization_complete", "chat": true, "color": "red", "name": "Captain", "message": "Amazing job by our Engineering team and their supervisor getting us through the treacherous wormhole safely! I do believe we should have a sensor sweep to see what is nearby.", "events": ["sensor_sweep2_start"] },
-		{ "trigger": "listener", "listen": "sensor_sweep2_complete", "chat": true, "color": "yellow", "name": "Security", "message": "That definitely looks like a dangerous alien ship! LET'S BLOW IT UP! Engage weapons and divert power to the shields!", "events": ["tutorial_weapons_start", "tutorial_overlay_start", "alien_fight_start"] }
+		{ "trigger": "listener", "listen": "sensor_sweep2_complete", "chat": true, "color": "yellow", "name": "Security", "message": "That definitely looks like a dangerous alien ship! LET'S BLOW IT UP! Engage weapons and divert power to the shields!", "events": [ "tutorial_shields_start", "tutorial_overlay_start" ] },
+		{ "trigger": "timer", "time": 5, "chat": true, "color": "red", "name": "Captain", "message": "Agreed. Engineering, give me as much energy to the shields and weapons as you can! Let's take these guys down!", "events": [ "alien_fight_start" ] }
 	]
 }

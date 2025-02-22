@@ -10,8 +10,8 @@ var message_sent = false
 
 func _ready() -> void:
 	Ship.core_energy_changed.connect(_on_core_energy_changed)
-	Game.connect("core_energy_warning", _on_core_energy_warning)
-	Game.connect("core_energy_drain", _on_core_energy_drain)
+	Game.core_energy_warning.connect(_on_core_energy_warning)
+	Game.core_energy_drain.connect(_on_core_energy_drain)
 	update_core_energy()
 
 func _pulse_animation() -> void:
@@ -26,7 +26,7 @@ func update_core_energy() -> void:
 	animation_player.play("RESET")
 	var percent_energy = Ship.core_energy
 	var radial_angle = (percent_energy/100.0) * 180.0
-	value_sprite.rotation_degrees = radial_angle
+	value_sprite.rotation_degrees = clamp(radial_angle, 0, 180)
 
 func _on_core_energy_changed() -> void:
 	update_core_energy()

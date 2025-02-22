@@ -9,6 +9,7 @@ signal sensor_item_found
 @onready var top_claw: Sprite2D = $SpaceScreen/SpaceMask/Claws/TopClaw
 @onready var bottom_claw: Sprite2D = $SpaceScreen/SpaceMask/Claws/BottomClaw
 @onready var space: Sprite2D = $SpaceScreen/SpaceMask/SpaceObjects/Space
+@onready var button_click_player: AudioStreamPlayer = $ButtonClickPlayer
 
 var next_space_object = 0
 var sensor_sweep_started = false
@@ -19,8 +20,8 @@ var alien_object = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	randomize()
-	Game.connect("sensor_sweep_start", _on_sensor_sweep_start)
-	Game.connect("sensor_sweep2_start", _on_sensor_sweep2_start)
+	Game.sensor_sweep_start.connect(_on_sensor_sweep_start)
+	Game.sensor_sweep2_start.connect(_on_sensor_sweep2_start)
 
 func _on_sensor_sweep_start() -> void:
 	sensor_sweep_started = true
@@ -60,6 +61,7 @@ func show_next_space_object() -> void:
 		left_arrows.show()
 
 func _on_close_clamp_button_pressed() -> void:
+	button_click_player.play()
 	if Ship.sensors_energy < 10:
 		Ship.sensors_energy = Ship.sensors_energy
 		return
@@ -86,6 +88,7 @@ func _on_close_clamp_button_pressed() -> void:
 	Ship.sensors_energy -= 10
 
 func _on_left_button_pressed() -> void:
+	button_click_player.play()
 	if Ship.sensors_energy < 5:
 		Ship.sensors_energy = Ship.sensors_energy
 		return
@@ -98,6 +101,7 @@ func _on_left_button_pressed() -> void:
 	Ship.sensors_energy -= 5
 
 func _on_right_button_pressed() -> void:
+	button_click_player.play()
 	if Ship.sensors_energy < 5:
 		Ship.sensors_energy = Ship.sensors_energy
 		return

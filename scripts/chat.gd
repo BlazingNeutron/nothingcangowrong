@@ -6,7 +6,7 @@ extends Node2D
 
 
 func _ready() -> void:
-	Game.connect("chat_message", _on_new_chat_message)
+	Game.chat_message.connect(_on_new_chat_message)
 
 func _on_new_chat_message(color, sender_name, message) -> void:
 	notification_sound.play()

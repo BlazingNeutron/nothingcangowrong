@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dum6vcbekxohf"]
+[gd_scene load_steps=21 format=3 uid="uid://dum6vcbekxohf"]
 
 [ext_resource type="PackedScene" uid="uid://dmpkbdyoo1qvm" path="res://scenes/panels/Panel.tscn" id="1_qaxki"]
 [ext_resource type="Script" path="res://scripts/sensors_panel.gd" id="2_1g622"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bavkesbajmjcd" path="res://assets/images/green-arrow-button-pressed.png" id="5_sawmy"]
 [ext_resource type="Shader" path="res://scripts/shaders/sweep-blur.gdshader" id="11_mh8p7"]
 [ext_resource type="Texture2D" uid="uid://cvx4t4tdr0r2b" path="res://assets/images/sensor-objects.png" id="12_4rppx"]
+[ext_resource type="AudioStream" uid="uid://qs1ptw34poph" path="res://assets/sounds/doot.mp3" id="13_37scc"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_coj1b"]
 shader = ExtResource("11_mh8p7")
@@ -206,6 +207,10 @@ libraries = {
 "": SubResource("AnimationLibrary_ix1ek")
 }
 autoplay = "blink"
+
+[node name="ButtonClickPlayer" type="AudioStreamPlayer" parent="." index="5"]
+stream = ExtResource("13_37scc")
+bus = &"SFX"
 
 [connection signal="pressed" from="CloseClampButton" to="." method="_on_close_clamp_button_pressed"]
 [connection signal="pressed" from="LeftButton" to="." method="_on_left_button_pressed"]

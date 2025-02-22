@@ -7,8 +7,8 @@ extends Control
 var hide_color = false
 
 func _ready() -> void:
-	Game.connect("wormhole_start", start_wormhole_overlay)
-	Game.connect("core_stabilization_complete", complete_wormhole_overlay)
+	Game.wormhole_start.connect(start_wormhole_overlay)
+	Game.core_stabilization_complete.connect(complete_wormhole_overlay)
 
 func start_wormhole_overlay() -> void:
 	wormhole_effect.start()

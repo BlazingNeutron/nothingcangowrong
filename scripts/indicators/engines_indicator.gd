@@ -4,8 +4,8 @@ var dangerzone = 0
 var wormhole_event_started = false
 
 func _ready() -> void:
-	Game.connect("wormhole_start", _on_wormhole_start)
-	Game.connect("core_stabilization_complete", _on_wormhole_complete)
+	Game.wormhole_start.connect(_on_wormhole_start)
+	Game.core_stabilization_complete.connect(_on_wormhole_complete)
 	Ship.engines_energy_changed.connect(_on_engines_energy_changed)
 	self._update_display(Ship.engines_energy)
 

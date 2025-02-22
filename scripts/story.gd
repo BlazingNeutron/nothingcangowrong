@@ -6,11 +6,11 @@ var game_story = null
 var index = 0
 
 func _ready() -> void:
-	Game.connect("story_start", restart_game)
-	Game.connect("life_support_warning", life_support_warning)
-	Game.connect("engine_warning", engine_warning)
-	Game.connect("core_energy_warning", core_warning_message)
-	story_timer.connect("timeout", _on_next_message_timeout)
+	Game.story_start.connect(restart_game)
+	Game.life_support_warning.connect(life_support_warning)
+	Game.engine_warning.connect(engine_warning)
+	Game.core_energy_warning.connect(core_warning_message)
+	story_timer.timeout.connect(_on_next_message_timeout)
 	var file = FileAccess.get_file_as_string("res://assets/story/story.json")
 	game_story = JSON.parse_string(file)
 
