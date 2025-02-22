@@ -90,4 +90,8 @@ libraries = {
 wait_time = 2.0
 autostart = true
 
+[node name="CoreDrainRestoreTimer" type="Timer" parent="."]
+wait_time = 0.5
+
 [connection signal="timeout" from="CoreStatusTimer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="CoreDrainRestoreTimer" to="." method="_on_core_drain_restore_timer_timeout"]

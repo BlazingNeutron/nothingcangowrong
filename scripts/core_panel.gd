@@ -57,7 +57,7 @@ func _on_discharge_button_pressed() -> void:
 		element.queue_free()
 		if unstable_reactions_destroyed >= 28:
 			core_stabilized()
-	Ship.energy_drain()
+	Game.fire_event("core_energy_drain")
 
 func core_stabilized() -> void:
 	destabilization_started = false
