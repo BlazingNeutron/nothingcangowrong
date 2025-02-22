@@ -9,6 +9,7 @@ func _ready() -> void:
 	Game.connect("story_start", restart_game)
 	Game.connect("life_support_warning", life_support_warning)
 	Game.connect("engine_warning", engine_warning)
+	Game.connect("core_energy_warning", core_warning_message)
 	story_timer.connect("timeout", _on_next_message_timeout)
 	var file = FileAccess.get_file_as_string("res://assets/story/story.json")
 	game_story = JSON.parse_string(file)
@@ -40,4 +41,8 @@ func life_support_warning() -> void:
 	Game.receive_chat_message("red", "Captain", "The air is getting a little thin up here!")
 
 func engine_warning() -> void:
-	Game.receive_chat_message("blue", "Supervisor", "We need more power to the engines!  We can't stop here!")
+	Game.receive_chat_message("blue", "Supervisor", "We need more power to the engines! We can't stop here!")
+
+func core_warning_message() -> void:
+	Game.receive_chat_message("red", "Captain", "What is happening to my ship?!")
+	Game.receive_chat_message("blue", "Supervisor", "The core is overheating! We'll blow up! Return power from non-critical systems! NOW!")

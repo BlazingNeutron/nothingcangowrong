@@ -1,10 +1,34 @@
-[gd_scene load_steps=9 format=3 uid="uid://c48p75mcm25jp"]
+[gd_scene load_steps=11 format=3 uid="uid://c48p75mcm25jp"]
 
 [ext_resource type="Script" path="res://scripts/indicators/radial-indicator.gd" id="1_tm44i"]
 [ext_resource type="Texture2D" uid="uid://cchqaegl2esho" path="res://assets/images/radial-indicator-mask.png" id="2_vuftt"]
 [ext_resource type="Texture2D" uid="uid://ceg0qx1qgbcb0" path="res://assets/images/rg-radial-indicator.png" id="3_7ypyw"]
+[ext_resource type="Shader" path="res://scripts/shaders/bloom.gdshader" id="4_62118"]
 [ext_resource type="Texture2D" uid="uid://cfbluitthtnc3" path="res://assets/images/radial-indicator-frame.png" id="4_rcvod"]
 [ext_resource type="Texture2D" uid="uid://boumm78jaqrmn" path="res://assets/images/warning-sign.png" id="5_jp3e7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7n7t7"]
+resource_local_to_scene = true
+shader = ExtResource("4_62118")
+shader_parameter/rect_size = Vector2(0.2, 1)
+shader_parameter/bness = 0.0
+shader_parameter/fall_off_scale = 1.0
+shader_parameter/b_offset = 0.3
+
+[sub_resource type="Animation" id="Animation_4m5d1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_vp6vi"]
 resource_name = "warning_flash"
@@ -20,21 +44,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_4m5d1"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gxup6"]
@@ -58,14 +67,27 @@ texture = ExtResource("3_7ypyw")
 flip_v = true
 region_rect = Rect2(0, 0, 250, 125)
 
+[node name="Glow" type="Sprite2D" parent="ValueMask"]
+unique_name_in_owner = true
+clip_children = 2
+material = SubResource("ShaderMaterial_7n7t7")
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("2_vuftt")
+
 [node name="FrameSprite" type="Sprite2D" parent="."]
 texture = ExtResource("4_rcvod")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="WarningIcon" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0)
 texture = ExtResource("5_jp3e7")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="WarningIcon"]
 libraries = {
 "": SubResource("AnimationLibrary_gxup6")
 }
+
+[node name="CoreStatusTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="CoreStatusTimer" to="." method="_on_timer_timeout"]

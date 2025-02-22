@@ -16,6 +16,7 @@ signal chat_message(color, sender_name, message)
 signal life_support_warning
 signal game_over
 signal engine_warning
+signal core_energy_warning
 
 var index = 0
 var game_story = null

@@ -47,6 +47,8 @@ func _on_spawn_timer_timeout() -> void:
 	new_element.position.y = posY
 	unstable_reactions.add_child(new_element)
 	unstable_reaction_elements.push_back(new_element)
+	# next ion spawn at random interval
+	spawn_timer.wait_time = randf_range(0.5, 2.5)
 
 func _on_discharge_button_pressed() -> void:
 	while unstable_reaction_elements.size() > 0:
