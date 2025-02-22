@@ -58,6 +58,7 @@ func _ready() -> void:
 	emit_signal("shields_energy_changed")
 	emit_signal("engines_energy_changed")
 	emit_signal("lifesupport_energy_changed")
+	Game.connect("story_start", restart_game)
 	recalc_core()
 
 func recalc_core() -> void:
@@ -78,4 +79,12 @@ func energy_drain() -> void:
 	core_energy -= 25
 
 func energy_restored() -> void:
+	recalc_core()
+
+func restart_game() -> void:
+	weapons_energy = 0
+	shields_energy = 10
+	engines_energy = 40
+	sensors_energy = 10
+	life_support_energy = 10
 	recalc_core()
