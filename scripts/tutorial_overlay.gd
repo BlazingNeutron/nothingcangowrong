@@ -11,7 +11,7 @@ func _ready() -> void:
 	Game.tutorial_core_start.connect(_on_tutorial_core_start)
 
 func _on_tutorial_power_start() -> void:
-	tutorial_text.text = "These are the power level indicators and controls. The indicators are for the core, sensors, weapons, shields, engines and life support. You can adjust power levels as required for your tasks. Don't use all the core's power, it'll overheat."
+	tutorial_text.text = "These are the power level indicators and controls. The core represents the total available power. You can distribute it among five systems: sensors, weapons, shields, engines, and life support. Adjust power levels as needed for your tasks, but be careful—using too much power can overheat the core."
 	self.position.x = -500
 	self.position.y = -500
 	tutorial_text_panel.position.x = 650
