@@ -77,15 +77,18 @@ func _on_close_clamp_button_pressed() -> void:
 		tween.tween_property(sensor_object.material, "shader_parameter/amount", focus_amount, 0.2)
 		if focus_amount > 250:
 			objects_found += 1
-			tween.tween_property(sensor_object.material, "shader_parameter/amount", 10, 0.1)
-			reset_sensor_view()
-			if objects_found < 5:
-				show_next_space_object()
-			elif objects_found == 5:
-				Game.first_sensor_sweep_complete()
-			elif alien_object:
-				Game.second_sensor_sweep_complete()
+			tween.tween_property(sensor_object.material, "shader_parameter/amount", 10, 1)
+			tween.tween_callback(_space_object_cleared).finished
 	Ship.sensors_energy -= 10
+
+func _space_object_cleared() -> void:
+	reset_sensor_view()
+	if objects_found < 5:
+		show_next_space_object()
+	elif objects_found == 5:
+		Game.first_sensor_sweep_complete()
+	elif alien_object:
+		Game.second_sensor_sweep_complete()
 
 func _on_left_button_pressed() -> void:
 	button_click_player.play()

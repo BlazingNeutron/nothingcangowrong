@@ -14,6 +14,7 @@
 		{ "trigger": "timer", "time": 5, "chat": false, "events": [ "wormhole_start" ] },
 		{ "trigger": "listener", "listen": "core_stabilization_complete", "chat": true, "color": "red", "name": "Captain", "message": "Amazing job by our Engineering team and their supervisor getting us through the treacherous wormhole safely! I do believe we should have a sensor sweep to see what is nearby.", "events": ["sensor_sweep2_start"] },
 		{ "trigger": "listener", "listen": "sensor_sweep2_complete", "chat": true, "color": "yellow", "name": "Security", "message": "That definitely looks like a dangerous alien ship! LET'S BLOW IT UP! Engage weapons and divert power to the shields!", "events": [ "tutorial_shields_start", "tutorial_overlay_start" ] },
-		{ "trigger": "timer", "time": 5, "chat": true, "color": "red", "name": "Captain", "message": "Agreed. Engineering, give me as much energy to the shields and weapons as you can! Let's take these guys down!", "events": [ "alien_fight_start" ] }
+		{ "trigger": "timer", "time": 5, "chat": true, "color": "red", "name": "Captain", "message": "Agreed. Engineering, give me as much energy to the shields and weapons as you can! Let's take these guys down!", "events": [ "alien_fight_start" ] },
+		{ "trigger": "listener", "listen": "alien_fight_completed", "chat": true, "color": "red", "name": "Captain", "message": "Woot! Like I said earlier, absolutely nothing can go wrong.", "events": false }
 	]
 }

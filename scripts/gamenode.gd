@@ -15,7 +15,6 @@ func _ready() -> void:
 	Game.game_over.connect(_on_game_over)
 	Game.start_story()
 	ship_startup_player.play()
-	music_player.play()
 
 func _on_tutorial_overlay_start() -> void:
 	tutorial_overlay.show()
@@ -31,3 +30,6 @@ func _on_tutorial_overlay_complete() -> void:
 
 func _on_game_over() -> void:
 	get_tree().change_scene_to_file("res://scenes/GameOverExplosion.tscn")
+
+func _on_ship_startup_player_finished() -> void:
+	music_player.play()

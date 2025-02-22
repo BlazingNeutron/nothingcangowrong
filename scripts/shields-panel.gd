@@ -17,10 +17,10 @@ var alien_fight_started = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	randomize()
-	top = 50
-	right = 0
-	bottom = 25
-	left = 0
+	top = 1
+	right = 1
+	bottom = 1
+	left = 1
 	Game.alien_fight_start.connect(_on_alien_fight_start)
 	Game.alien_fight_completed.connect(_on_alien_fight_completed)
 	update_shields()
@@ -31,17 +31,28 @@ func update_shields() -> void:
 	update_bottom_shield()
 	update_left_shield()
 
+func update_shield(shield : Sprite2D, value : int) -> void:
+	if value <= 0:
+		shield.modulate.r = 0
+		shield.modulate.g = 0
+		shield.modulate.b = 0
+	else:
+		shield.modulate.r = 1
+		shield.modulate.g = 1
+		shield.modulate.b = 1
+	shield.modulate.a = clamp(0.3 + (value * 0.007), 0.3, 1.0)
+
 func update_top_shield() -> void:
-	top_shield.modulate.a = clamp(0.3 + (top * 0.007), 0.3, 1.0)
+	update_shield(top_shield, top)
 
 func update_right_shield() -> void:
-	right_shield.modulate.a = clamp(0.3 + (right * 0.007), 0.3, 1.0)
+	update_shield(right_shield, right)
 
 func update_bottom_shield() -> void:
-	bottom_shield.modulate.a = clamp(0.3 + (bottom * 0.007), 0.3, 1.0)
+	update_shield(bottom_shield, bottom)
 
 func update_left_shield() -> void:
-	left_shield.modulate.a = clamp(0.3 + (left * 0.007), 0.3, 1.0)
+	update_shield(left_shield, left)
 
 func _on_top_shield_restore_button_pressed() -> void:
 	if Ship.shields_energy < 5:

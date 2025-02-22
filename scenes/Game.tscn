@@ -71,3 +71,5 @@ parameters/looping = true
 stream = ExtResource("13_5xufl")
 volume_db = -11.0
 bus = &"SFX"
+
+[connection signal="finished" from="ShipStartupPlayer" to="." method="_on_ship_startup_player_finished"]
