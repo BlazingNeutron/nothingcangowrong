@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://cf6k2g6gsqydf"]
+[gd_scene load_steps=8 format=3 uid="uid://cf6k2g6gsqydf"]
 
 [ext_resource type="Script" path="res://scripts/indicators/simple_indicator.gd" id="1_qbywq"]
 [ext_resource type="Texture2D" uid="uid://cnhy7xutjftt" path="res://assets/images/redgreen-indicator-mask.png" id="2_6qb1d"]
 [ext_resource type="Texture2D" uid="uid://cm0uqpg1oiwyc" path="res://assets/images/redgreen-indicator.png" id="2_dp4gy"]
 [ext_resource type="Texture2D" uid="uid://02mrbej0ad6x" path="res://assets/images/rg-indicator-frame.png" id="3_vg5nc"]
 [ext_resource type="Shader" path="res://scripts/shaders/bloom.gdshader" id="3_xukqx"]
+[ext_resource type="AudioStream" uid="uid://cxmyat0lvvltm" path="res://assets/sounds/pew.wav" id="6_644ah"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fo6hm"]
 resource_local_to_scene = true
@@ -43,5 +44,10 @@ texture = ExtResource("3_vg5nc")
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.0
 autostart = true
+
+[node name="SystemDrainedPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_644ah")
+volume_db = -11.0
+bus = &"SFX"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

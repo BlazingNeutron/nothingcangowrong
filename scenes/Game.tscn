@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b2hg70jmfdo10"]
+[gd_scene load_steps=14 format=3 uid="uid://b2hg70jmfdo10"]
 
 [ext_resource type="Script" path="res://scripts/gamenode.gd" id="1_3c815"]
 [ext_resource type="PackedScene" uid="uid://daqqsc7gij321" path="res://scenes/MainPanel.tscn" id="1_k1nbn"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://ddacjsjtjlf46" path="res://scenes/panels/shields-panel.tscn" id="8_fh13f"]
 [ext_resource type="PackedScene" uid="uid://dbsqdqkgmr670" path="res://scenes/WormholeOverlay.tscn" id="10_847ua"]
 [ext_resource type="PackedScene" uid="uid://di1b1iqdvjsee" path="res://scenes/Story.tscn" id="11_tc4cf"]
+[ext_resource type="AudioStream" uid="uid://d0fc3ejtcgh4i" path="res://assets/sounds/ufo-start-up-68712.mp3" id="13_5xufl"]
 
 [node name="Game" type="Node2D"]
 process_mode = 1
@@ -58,11 +59,15 @@ offset_top = -720.0
 offset_right = 1280.0
 offset_bottom = 720.0
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 stream = ExtResource("5_dufet")
-autoplay = true
 bus = &"Music"
 parameters/looping = true
 
 [node name="Story" parent="." instance=ExtResource("11_tc4cf")]
+
+[node name="ShipStartupPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_5xufl")
+volume_db = -11.0
+bus = &"SFX"

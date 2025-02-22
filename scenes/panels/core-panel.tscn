@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dau8e4lmba7jb"]
+[gd_scene load_steps=18 format=3 uid="uid://dau8e4lmba7jb"]
 
 [ext_resource type="PackedScene" uid="uid://dmpkbdyoo1qvm" path="res://scenes/panels/Panel.tscn" id="1_5sxin"]
 [ext_resource type="Shader" path="res://scripts/lightningball.gdshader" id="2_gfb1n"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dp3ca1fb4r67n" path="res://assets/images/green-long-button-normal.png" id="4_r3yd2"]
 [ext_resource type="Texture2D" uid="uid://c81y38g8ot8hf" path="res://assets/images/green-long-button-pressed.png" id="5_8t8h6"]
 [ext_resource type="FontFile" uid="uid://btv6f7cyb43j7" path="res://assets/fonts/SpaceNova-6Rpd1.otf" id="6_7peq7"]
+[ext_resource type="AudioStream" uid="uid://c1y0ikff8jdn0" path="res://assets/sounds/womp.wav" id="7_k5824"]
 
 [sub_resource type="Gradient" id="Gradient_g58vn"]
 
@@ -67,6 +68,7 @@ offset_left = 62.5
 offset_top = 80.0
 offset_right = 445.5
 offset_bottom = 127.0
+mouse_filter = 1
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("6_7peq7")
 theme_override_font_sizes/normal_font_size = 44
@@ -77,6 +79,10 @@ fit_content = true
 
 [node name="SpawnTimer" type="Timer" parent="UnstableReactions" index="0"]
 wait_time = 2.0
+
+[node name="DischargePlayer" type="AudioStreamPlayer" parent="." index="4"]
+stream = ExtResource("7_k5824")
+bus = &"SFX"
 
 [connection signal="pressed" from="DischargeButton" to="." method="_on_discharge_button_pressed"]
 [connection signal="timeout" from="UnstableReactions/SpawnTimer" to="." method="_on_spawn_timer_timeout"]

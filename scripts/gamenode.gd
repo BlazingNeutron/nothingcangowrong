@@ -3,6 +3,8 @@ extends Node2D
 @onready var tutorial_overlay: Control = $TutorialOverlay
 @onready var wormhole_overlay: Control = $WormholeOverlay
 @onready var story: Node2D = $Story
+@onready var ship_startup_player: AudioStreamPlayer = $ShipStartupPlayer
+@onready var music_player: AudioStreamPlayer = $MusicPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -12,6 +14,8 @@ func _ready() -> void:
 	Game.tutorial_overlay_complete.connect(_on_tutorial_overlay_complete)
 	Game.game_over.connect(_on_game_over)
 	Game.start_story()
+	ship_startup_player.play()
+	music_player.play()
 
 func _on_tutorial_overlay_start() -> void:
 	tutorial_overlay.show()

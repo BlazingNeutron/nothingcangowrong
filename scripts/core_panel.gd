@@ -2,6 +2,7 @@ extends "res://scripts/panel.gd"
 
 @onready var unstable_reactions: Node2D = $UnstableReactions
 @onready var spawn_timer: Timer = $UnstableReactions/SpawnTimer
+@onready var discharge_player: AudioStreamPlayer = $DischargePlayer
 
 var unstable_reaction = preload("res://scenes/unstable_reaction.tscn")
 var unstable_reaction_elements = []
@@ -51,6 +52,7 @@ func _on_spawn_timer_timeout() -> void:
 	spawn_timer.wait_time = randf_range(0.5, 2.5)
 
 func _on_discharge_button_pressed() -> void:
+	discharge_player.play()
 	while unstable_reaction_elements.size() > 0:
 		var element = unstable_reaction_elements.pop_front()
 		unstable_reactions_destroyed += 1

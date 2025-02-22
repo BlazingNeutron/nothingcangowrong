@@ -26,6 +26,8 @@ shader_parameter/noise = SubResource("NoiseTexture2D_3av5w")
 shader_parameter/noise2 = SubResource("NoiseTexture2D_c3y6u")
 
 [sub_resource type="Gradient" id="Gradient_bwdye"]
+offsets = PackedFloat32Array(0, 0.204819, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.629675, 0.629675, 0.629675, 1, 1, 1, 1, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_0a6jg"]
 

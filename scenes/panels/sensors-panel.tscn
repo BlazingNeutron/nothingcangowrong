@@ -210,6 +210,7 @@ autoplay = "blink"
 
 [node name="ButtonClickPlayer" type="AudioStreamPlayer" parent="." index="5"]
 stream = ExtResource("13_37scc")
+volume_db = 5.0
 bus = &"SFX"
 
 [connection signal="pressed" from="CloseClampButton" to="." method="_on_close_clamp_button_pressed"]

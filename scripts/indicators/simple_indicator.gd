@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var value_sprite: Sprite2D = $ValueMask/ValueSprite
 @onready var timer: Timer = $Timer
+@onready var system_drained_player: AudioStreamPlayer = $SystemDrainedPlayer
 
 func _ready() -> void:
 	_on_change(_read_value())
@@ -21,6 +22,8 @@ func _pulse_animation() -> void:
 	tween.tween_property(glow.material, "shader_parameter/bness", 0.0, 0.2)
 
 func _on_change(value) -> void:
+	if value <= 0:
+		system_drained_player.play()
 	_update_display(value)
 	_pulse_animation()
 

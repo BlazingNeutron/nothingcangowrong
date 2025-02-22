@@ -17,8 +17,19 @@ var alien_fight_started = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	randomize()
+	top = 50
+	right = 0
+	bottom = 25
+	left = 0
 	Game.alien_fight_start.connect(_on_alien_fight_start)
 	Game.alien_fight_completed.connect(_on_alien_fight_completed)
+	update_shields()
+
+func update_shields() -> void:
+	update_top_shield()
+	update_right_shield()
+	update_bottom_shield()
+	update_left_shield()
 
 func update_top_shield() -> void:
 	top_shield.modulate.a = clamp(0.3 + (top * 0.007), 0.3, 1.0)

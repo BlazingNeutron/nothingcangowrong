@@ -27,7 +27,7 @@ func _on_tutorial_sensors_start() -> void:
 	start_overlay()
 
 func _on_tutorial_core_start() -> void:
-	tutorial_text.text = "This is the core level stability scanner and discharge controls. Discharging drains the core and all systems lose energy, but will save you from any negative affects of ionization."
+	tutorial_text.text = "This is the power core display panel. Wormholes travel causes dark matter ions to radiate from the core. The button will discharge the core, draining power from all of the systems each time, but will get rid of any visible spawned ions. If too many ions are allowed in the core, the core will explode. "
 	self.position.x = -900
 	self.position.y = 300
 	tutorial_text_panel.position.x = 350
