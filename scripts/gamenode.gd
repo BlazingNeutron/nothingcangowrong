@@ -8,13 +8,12 @@ extends Node2D
 func _ready() -> void:
 	#story.connect("tutorial_overlay_start", _on_tutorial_overlay_start)
 	Game.connect("wormhole_start", _on_wormhole_start)
-	tutorial_overlay.hide()
-	tutorial_overlay.connect("tutorial_overlay_complete", _on_tutorial_overlay_complete)
+	Game.connect("tutorial_overlay_start", _on_tutorial_overlay_start)
+	Game.connect("tutorial_overlay_complete", _on_tutorial_overlay_complete)
 	Game.start_story()
 
 func _on_tutorial_overlay_start() -> void:
 	tutorial_overlay.show()
-	tutorial_overlay.start_overlay()
 	get_tree().paused = true
 
 func _on_wormhole_start() -> void:

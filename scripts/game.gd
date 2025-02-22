@@ -1,6 +1,8 @@
 extends Node2D
 
 signal story_start
+signal tutorial_overlay_start
+signal tutorial_overlay_complete
 signal tutorial_power_start
 signal tutorial_sensors_start
 signal tutorial_core_start
@@ -17,9 +19,6 @@ var game_story = null
 
 func fire_event(event_name : String) -> void:
 	emit_signal(event_name)
-
-func start_tutorial_overlay() -> void:
-	emit_signal("tutorial_overlay_start")
 
 func start_story() -> void:
 	emit_signal("story_start")
