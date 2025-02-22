@@ -44,6 +44,7 @@ scale = Vector2(1.5, 1.5)
 
 [node name="TutorialOverlay" parent="." instance=ExtResource("1_y8e0b")]
 process_mode = 3
+visible = false
 
 [node name="WormholeOverlay" parent="." instance=ExtResource("10_847ua")]
 visible = false
