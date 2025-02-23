@@ -4,6 +4,7 @@ extends Node2D
 
 var game_story = null
 var index = 0
+var max_story_index = 1000
 
 func _ready() -> void:
 	Game.story_start.connect(restart_game)
@@ -13,6 +14,7 @@ func _ready() -> void:
 	story_timer.timeout.connect(_on_next_message_timeout)
 	var file = FileAccess.get_file_as_string("res://assets/story/story.json")
 	game_story = JSON.parse_string(file)
+	max_story_index = game_story.story.size()
 
 func restart_game() -> void:
 	story_timer.start()
@@ -30,6 +32,8 @@ func _on_next_message_timeout() -> void:
 			Game.fire_event(event)
 	
 	index += 1
+	if index >= max_story_index:
+		return
 	if game_story.story[index].trigger == "timer":
 		var next_time = game_story.story[index].time
 		story_timer.wait_time = next_time

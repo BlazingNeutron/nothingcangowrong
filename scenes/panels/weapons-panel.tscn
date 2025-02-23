@@ -27,7 +27,6 @@ texture = ExtResource("3_0520g")
 position = Vector2(0, 777)
 
 [node name="WeaponFill" type="Sprite2D" parent="WeaponsSystems/WeaponOutline/Node2D" index="0"]
-position = Vector2(0, -1700)
 scale = Vector2(8.5, 8.5)
 texture = ExtResource("4_dfstr")
 flip_v = true

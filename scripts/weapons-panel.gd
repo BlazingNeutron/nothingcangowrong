@@ -8,8 +8,6 @@ extends "res://scripts/panel.gd"
 @onready var weapons_firing_timer: Timer = $WeaponsFiringTimer
 @onready var weapons_fill_timer: Timer = $WeaponsFillTimer
 
-var filling = false
-
 func _ready() -> void:
 	randomize()
 	Game.alien_fight_start.connect(_on_alien_fight_start)
@@ -23,14 +21,13 @@ func _on_alien_fight_completed() -> void:
 	weapons_firing_timer.stop()
 
 func _on_toggle_button_pressed() -> void:
-	filling = !filling
-	if filling:
+	if toggle_button.button_pressed:
 		weapons_fill_timer.start()
 	else:
 		weapons_fill_timer.stop()
 
 func _on_weapons_fill_timer_timeout() -> void:
-	if Ship.weapons_energy > 0 and toggle_button.button_pressed:
+	if Ship.weapons_energy > 0 and toggle_button.button_pressed and weapon_fill.position.y > -1700:
 		var newPosY = clamp(weapon_fill.position.y - 20, -1700, 0)
 		weapon_fill.position.y = newPosY
 		Ship.weapons_energy -= 1
@@ -39,6 +36,7 @@ func _on_weapons_fill_timer_timeout() -> void:
 		weapons_fill_timer.stop()
 
 func _on_weapons_firing_timer_timeout() -> void:
-	if weapon_fill.position.y < 0:
+	weapons_firing_timer.wait_time = randf_range(2.0, 5.0)
+	if weapon_fill.position.y > -1700:
 		var newPosY = clamp(weapon_fill.position.y + 100, -1700, 0)
 		weapon_fill.position.y = newPosY
