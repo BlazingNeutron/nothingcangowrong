@@ -31,9 +31,9 @@ stream = ExtResource("8_ki370")
 bus = &"SFX"
 
 [node name="RichTextLabel" parent="." index="5"]
-offset_left = -72.0
+offset_left = -114.0
 offset_top = -144.0
-offset_right = 203.0
+offset_right = 161.0
 offset_bottom = -104.0
 text = "Shield Activation"
 

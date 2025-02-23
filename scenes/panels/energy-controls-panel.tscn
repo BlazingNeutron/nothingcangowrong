@@ -14,8 +14,9 @@ region_rect = Rect2(0, 190, 418, 297)
 [node name="Control" type="Control" parent="." index="1"]
 layout_mode = 3
 anchors_preset = 0
+offset_top = 9.0
 offset_right = 40.0
-offset_bottom = 40.0
+offset_bottom = 49.0
 
 [node name="SensorsVSlider" type="VSlider" parent="Control" index="0"]
 layout_mode = 0
@@ -63,7 +64,7 @@ theme_override_icons/grabber = ExtResource("4_4kcdb")
 theme_override_icons/grabber_highlight = ExtResource("4_4kcdb")
 
 [node name="Icons" type="Node2D" parent="." index="2"]
-position = Vector2(0, -16)
+position = Vector2(0, -6)
 
 [node name="SensorsIcon" type="Sprite2D" parent="Icons" index="0"]
 position = Vector2(-144, 110)
@@ -101,10 +102,11 @@ region_enabled = true
 region_rect = Rect2(0, 0, 100, 100)
 
 [node name="RichTextLabel" parent="." index="3"]
-offset_left = -102.0
+offset_left = -174.0
 offset_top = -143.0
-offset_right = 173.0
-offset_bottom = -103.0
+offset_right = 195.0
+offset_bottom = -101.0
+theme_override_font_sizes/normal_font_size = 18
 text = "Energy Flow Controllers"
 
 [connection signal="drag_ended" from="Control/SensorsVSlider" to="." method="_on_sensors_v_slider_drag_ended"]

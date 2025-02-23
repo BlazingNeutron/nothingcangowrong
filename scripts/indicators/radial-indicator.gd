@@ -13,7 +13,6 @@ var message_sent = false
 func _ready() -> void:
 	Ship.core_energy_changed.connect(_on_core_energy_changed)
 	Game.core_energy_warning.connect(_on_core_energy_warning)
-	Game.core_energy_drain.connect(_on_core_energy_drain)
 	update_core_energy()
 	animation_player.play("warning_flash")
 
@@ -53,11 +52,6 @@ func _on_timer_timeout() -> void:
 		message_sent = false
 		dangerzone = 0
 
-func _on_core_energy_drain() -> void:
-	core_drain_restore_timer.start()
-
 func _on_core_drain_restore_timer_timeout() -> void:
 	if Ship.core_drain > 0:
 		Ship.core_drain -= 5
-	else:
-		core_drain_restore_timer.stop()

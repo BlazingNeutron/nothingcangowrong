@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dmpkbdyoo1qvm"]
+[gd_scene load_steps=4 format=3 uid="uid://dmpkbdyoo1qvm"]
 
 [ext_resource type="Texture2D" uid="uid://cjxxxt7q625qs" path="res://assets/images/panels.png" id="1_4hp5h"]
 [ext_resource type="Script" path="res://scripts/panel.gd" id="1_vpnri"]
+[ext_resource type="FontFile" uid="uid://btv6f7cyb43j7" path="res://assets/fonts/SpaceNova-6Rpd1.otf" id="3_o305m"]
 
 [node name="Panel" type="Node2D"]
 script = ExtResource("1_vpnri")
@@ -21,6 +22,7 @@ offset_right = 140.0
 offset_bottom = -40.0
 grow_horizontal = 2
 theme_override_colors/default_color = Color(0.282353, 0.945098, 0.560784, 1)
+theme_override_fonts/normal_font = ExtResource("3_o305m")
 theme_override_font_sizes/normal_font_size = 19
 text = "Title"
 fit_content = true

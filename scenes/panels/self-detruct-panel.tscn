@@ -20,10 +20,10 @@ texture_normal = ExtResource("3_76e0p")
 texture_pressed = ExtResource("4_mgryc")
 
 [node name="RichTextLabel" parent="." index="2"]
-offset_left = -77.0
-offset_top = -235.0
-offset_right = 198.0
-offset_bottom = -195.0
+offset_left = -119.0
+offset_top = -232.0
+offset_right = 156.0
+offset_bottom = -192.0
 text = "Self-Destruction"
 
 [connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

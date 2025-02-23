@@ -83,8 +83,8 @@ libraries = {
 }
 
 [node name="RichTextLabel" parent="." index="4"]
-offset_left = -49.0
-offset_top = -237.0
-offset_right = 226.0
-offset_bottom = -197.0
+offset_left = -74.0
+offset_top = -235.0
+offset_right = 201.0
+offset_bottom = -195.0
 text = "Crew Chat"

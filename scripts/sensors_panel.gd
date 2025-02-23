@@ -16,6 +16,7 @@ var sensor_sweep_started = false
 var focus_amount = 10
 var objects_found = 0
 var alien_object = false
+var lock_claws = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -36,6 +37,10 @@ func reset_sensor_view() -> void:
 	sensor_object.hide()
 	right_arrows.hide()
 	left_arrows.hide()
+	reset_claw_sensors()
+
+func reset_claw_sensors() -> void:
+	lock_claws = false
 	top_claw.position.y = -155
 	bottom_claw.position.y = 155
 	focus_amount = 10
@@ -62,6 +67,8 @@ func show_next_space_object() -> void:
 
 func _on_close_clamp_button_pressed() -> void:
 	button_click_player.play()
+	if lock_claws:
+		return
 	if Ship.sensors_energy < 10:
 		Ship.sensors_energy = Ship.sensors_energy
 		return
@@ -77,6 +84,7 @@ func _on_close_clamp_button_pressed() -> void:
 		tween.tween_property(sensor_object.material, "shader_parameter/amount", focus_amount, 0.2)
 		if focus_amount > 250:
 			objects_found += 1
+			lock_claws = true
 			tween.tween_property(sensor_object.material, "shader_parameter/amount", 10, 1)
 			tween.tween_callback(_space_object_cleared).finished
 	Ship.sensors_energy -= 10
@@ -92,6 +100,7 @@ func _space_object_cleared() -> void:
 
 func _on_left_button_pressed() -> void:
 	button_click_player.play()
+	reset_claw_sensors()
 	if Ship.sensors_energy < 5:
 		Ship.sensors_energy = Ship.sensors_energy
 		return
@@ -105,6 +114,7 @@ func _on_left_button_pressed() -> void:
 
 func _on_right_button_pressed() -> void:
 	button_click_player.play()
+	reset_claw_sensors()
 	if Ship.sensors_energy < 5:
 		Ship.sensors_energy = Ship.sensors_energy
 		return

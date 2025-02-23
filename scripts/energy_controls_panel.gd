@@ -35,21 +35,30 @@ func on_life_support_energy_changed() -> void:
 
 func _on_sensors_v_slider_drag_ended(value_changed: bool) -> void:
 	if value_changed:
+		if Ship.sensors_energy > sensors_v_slider.value:
+			Ship.core_drain += Ship.sensors_energy - sensors_v_slider.value
 		Ship.sensors_energy = sensors_v_slider.value
-	
+
 func _on_weapons_v_slider_drag_ended(value_changed: bool) -> void:
 	if value_changed:
+		if Ship.weapons_energy > weapons_v_slider.value:
+			Ship.core_drain += Ship.weapons_energy - weapons_v_slider.value
 		Ship.weapons_energy = weapons_v_slider.value
 
 func _on_shields_v_slider_drag_ended(value_changed: bool) -> void:
 	if value_changed:
+		if Ship.shields_energy > shields_v_slider.value:
+			Ship.core_drain += Ship.shields_energy - shields_v_slider.value
 		Ship.shields_energy = shields_v_slider.value
 
 func _on_engine_v_slider_drag_ended(value_changed: bool) -> void:
 	if value_changed:
+		if Ship.engines_energy > engine_v_slider.value:
+			Ship.core_drain += Ship.engines_energy - engine_v_slider.value
 		Ship.engines_energy = engine_v_slider.value
-
 
 func _on_life_support_v_slider_drag_ended(value_changed: bool) -> void:
 	if value_changed:
+		if Ship.life_support_energy > life_support_v_slider.value:
+			Ship.core_drain += Ship.life_support_energy - life_support_v_slider.value
 		Ship.life_support_energy = life_support_v_slider.value

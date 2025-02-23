@@ -96,6 +96,7 @@ autostart = true
 
 [node name="CoreDrainRestoreTimer" type="Timer" parent="."]
 wait_time = 0.5
+autostart = true
 
 [node name="CoreCriticalPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_avisb")

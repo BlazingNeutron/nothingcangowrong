@@ -141,5 +141,5 @@ func _on_alien_shots_fired_timer_timeout() -> void:
 			return
 		left -= 10 * damage
 		update_left_shield()
-	alien_shots_fired_timer.wait_time = randf_range(0.2, 3.0)
+	alien_shots_fired_timer.wait_time = randf_range(1.0, 4.0)
 	alien_shots_fired_timer.start()

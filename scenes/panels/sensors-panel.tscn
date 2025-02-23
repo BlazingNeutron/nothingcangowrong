@@ -214,7 +214,7 @@ volume_db = 5.0
 bus = &"SFX"
 
 [node name="RichTextLabel" parent="." index="6"]
-offset_left = -82.0
+offset_left = -143.0
 offset_top = -239.0
 offset_right = 193.0
 offset_bottom = -199.0

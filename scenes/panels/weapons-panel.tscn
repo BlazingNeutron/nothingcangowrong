@@ -23,8 +23,10 @@ position = Vector2(2, -45)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_0520g")
 
-[node name="WeaponFill" type="Sprite2D" parent="WeaponsSystems/WeaponOutline" index="0"]
-position = Vector2(-40, 791.111)
+[node name="Node2D" type="Node2D" parent="WeaponsSystems/WeaponOutline" index="0"]
+position = Vector2(0, 777)
+
+[node name="WeaponFill" type="Sprite2D" parent="WeaponsSystems/WeaponOutline/Node2D" index="0"]
 scale = Vector2(8.5, 8.5)
 texture = ExtResource("4_dfstr")
 flip_v = true
@@ -49,12 +51,15 @@ flip_h = true
 [node name="WeaponsFiringTimer" type="Timer" parent="." index="5"]
 
 [node name="WeaponsFillTimer" type="Timer" parent="." index="6"]
+wait_time = 0.1
 
 [node name="RichTextLabel" parent="." index="7"]
-offset_left = -86.0
-offset_top = -138.0
-offset_right = 189.0
-offset_bottom = -98.0
+offset_left = -134.0
+offset_top = -140.0
+offset_right = 153.0
+offset_bottom = -100.0
 text = "Weapons Recharger"
 
 [connection signal="pressed" from="WeaponsSystems/ToggleButton" to="." method="_on_toggle_button_pressed"]
+[connection signal="timeout" from="WeaponsFiringTimer" to="." method="_on_weapons_firing_timer_timeout"]
+[connection signal="timeout" from="WeaponsFillTimer" to="." method="_on_weapons_fill_timer_timeout"]
