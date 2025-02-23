@@ -3,6 +3,7 @@ extends "res://scripts/panel.gd"
 @onready var unstable_reactions: Node2D = $UnstableReactions
 @onready var spawn_timer: Timer = $UnstableReactions/SpawnTimer
 @onready var discharge_player: AudioStreamPlayer = $DischargePlayer
+@onready var core_reaction: Sprite2D = $CoreReaction
 
 var unstable_reaction = preload("res://scenes/unstable_reaction.tscn")
 var unstable_reaction_elements = []
@@ -46,6 +47,27 @@ func _on_spawn_timer_timeout() -> void:
 	var new_element = unstable_reaction.instantiate()
 	new_element.position.x = posX
 	new_element.position.y = posY
+	if unstable_reaction_elements.size() == 0:
+		var texture : NoiseTexture2D = core_reaction.texture
+		var c : Color = texture.color_ramp.get_color(1)
+		c.r = 0.282352941
+		c.g = 0.945098039
+		c.b = 0.560784314
+		texture.color_ramp.set_color(1, c)
+	if unstable_reaction_elements.size() == 2:
+		var texture : NoiseTexture2D = core_reaction.texture
+		var c : Color = texture.color_ramp.get_color(1)
+		c.r = 1.0
+		c.g = 0.5
+		c.b = 0.0
+		texture.color_ramp.set_color(1, c)
+	if unstable_reaction_elements.size() == 7:
+		var texture : NoiseTexture2D = core_reaction.texture
+		var c : Color = texture.color_ramp.get_color(1)
+		c.r = 1.0
+		c.g = 0.0
+		c.b = 0.0
+		texture.color_ramp.set_color(1, c)
 	unstable_reactions.add_child(new_element)
 	unstable_reaction_elements.push_back(new_element)
 	# next ion spawn at random interval

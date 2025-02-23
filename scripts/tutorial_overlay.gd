@@ -5,10 +5,10 @@ extends Control
 @onready var tutorial_text: RichTextLabel = $Panel/TutorialText
 
 func _ready() -> void:
-	Game.tutorial_shields_start.connect(_on_tutorial_shields_start)
 	Game.tutorial_power_start.connect(_on_tutorial_power_start)
 	Game.tutorial_sensors_start.connect(_on_tutorial_sensors_start)
 	Game.tutorial_core_start.connect(_on_tutorial_core_start)
+	Game.tutorial_shields_start.connect(_on_tutorial_shields_start)
 
 func _on_tutorial_power_start() -> void:
 	tutorial_text.text = "These are the power level indicators and controls. The core represents the total available power. You can distribute it among five systems: sensors, weapons, shields, engines, and life support. Adjust power levels as needed for your tasks, but be careful—using too much power can overheat the core."
@@ -35,11 +35,11 @@ func _on_tutorial_core_start() -> void:
 	start_overlay()
 
 func _on_tutorial_shields_start() -> void:
-	tutorial_text.text = "This is the shields distribution controls. Assign shields to different areas of the ship, don't let an area go weak during a battle."
-	self.position.x = -900
-	self.position.y = 300
-	tutorial_text_panel.position.x = 350
-	tutorial_text_panel.position.y = -400
+	tutorial_text.text = "This is the shields distribution controls. Assign shields to different areas of the ship, don't let an area go weak during a battle.\n\nThe weapons recharge control, refill the energy available to firing weapons. Make sure you have enough for battle!"
+	self.position.x = 600
+	self.position.y = -400
+	tutorial_text_panel.position.x = -1000
+	tutorial_text_panel.position.y = 400
 	start_overlay()
 
 func start_overlay() -> void:

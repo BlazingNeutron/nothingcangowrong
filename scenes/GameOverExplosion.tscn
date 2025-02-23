@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://irsd0yo8sd2s"]
+[gd_scene load_steps=12 format=3 uid="uid://irsd0yo8sd2s"]
 
 [ext_resource type="Script" path="res://scripts/game_over_explosion.gd" id="1_3mqpr"]
 [ext_resource type="Texture2D" uid="uid://cunv4xuvssuqn" path="res://assets/images/theend/frame03.png" id="1_ev4em"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cbia3pi78hoy0" path="res://assets/images/theend/frame08.png" id="6_75ekx"]
 [ext_resource type="Texture2D" uid="uid://cix7jvrhxcbr7" path="res://assets/images/theend/frame09.png" id="7_hbp36"]
 [ext_resource type="Texture2D" uid="uid://b1b5kqgvfblp8" path="res://assets/images/theend/frame10.png" id="8_75uas"]
+[ext_resource type="AudioStream" uid="uid://dqvvyes17c82k" path="res://assets/sounds/explosion.wav" id="10_keyaa"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lcam8"]
 animations = [{
@@ -84,6 +85,11 @@ text = "Restart"
 [node name="MainMenuButton" type="Button" parent="Control/VBoxContainer"]
 layout_mode = 2
 text = "Return to Main Menu"
+
+[node name="ExplosionSounds" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_keyaa")
+volume_db = 5.622
+bus = &"SFX"
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

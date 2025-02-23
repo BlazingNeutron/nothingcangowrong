@@ -16,8 +16,8 @@
 		{ "trigger": "listener", "listen": "core_stabilization_complete", "chat": true, "color": "red", "name": "Captain", "message": "Amazing job by our Engineering team and their supervisor getting us through the treacherous wormhole safely! I do believe we should have a sensor sweep to see what is nearby.", "events": ["sensor_sweep2_start"] },
 		{ "trigger": "listener", "listen": "sensor_sweep2_complete", "chat": true, "color": "yellow", "name": "Tactical", "message": "That looks like one of those dangerous alien ships! LET'S BLOW IT UP! Engage weapons and divert power to the shields!", "events": [ "tutorial_shields_start", "tutorial_overlay_start" ] },
 		{ "trigger": "timer", "time": 5, "chat": true, "color": "red", "name": "Captain", "message": "Agreed. Engineering, give me as much energy to the shields and weapons as you can! Let's take these guys down!", "events": [ "alien_fight_start" ] },
-		{ "trigger": "listener", "listen": "alien_fight_completed", "chat": true, "color": "red", "name": "Captain", "message": "Phew… that was close. Great work to all teams! This may have been exciting, but at least nothing went wrong!", "events": false },
-		{ "trigger": "timer", "time": 5, "chat": true, "color": "blue", "name": "Supervisor", "message": "I’d say nothing could go wrong at this point!", "events": false },
+		{ "trigger": "listener", "listen": "alien_fight_completed", "chat": true, "color": "red", "name": "Captain", "message": "Phew... that was close. Great work to all teams! This may have been exciting, but at least nothing went wrong!", "events": false },
+		{ "trigger": "timer", "time": 5, "chat": true, "color": "blue", "name": "Supervisor", "message": "I'd say nothing could go wrong at this point!", "events": false },
 		{ "trigger": "timer", "time": 5, "chat": false, "events": [ "game_over" ] }
 	]
 }

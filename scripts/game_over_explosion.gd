@@ -2,6 +2,7 @@ extends Node2D
 @onready var control: Control = $Control
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var timer: Timer = $Timer
+@onready var explosion_sounds: AudioStreamPlayer = $ExplosionSounds
 
 func _ready() -> void:
 	control.hide()
@@ -17,3 +18,4 @@ func _on_main_menu_button_pressed() -> void:
 
 func _on_timer_timeout() -> void:
 	animated_sprite_2d.play()
+	explosion_sounds.play()
