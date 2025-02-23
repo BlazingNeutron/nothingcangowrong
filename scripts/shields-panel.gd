@@ -102,6 +102,7 @@ func _on_left_shield_restore_button_pressed() -> void:
 
 func _on_alien_fight_start() -> void:
 	alien_fight_started = true
+	alien_fight_timer.start()
 	alien_shots_fired_timer.wait_time = 6
 	alien_shots_fired_timer.start()
 
@@ -111,6 +112,7 @@ func _on_alien_fight_completed() -> void:
 
 func _on_alien_fight_timer_timeout() -> void:
 	alien_shots_fired_timer.stop()
+	alien_fight_timer.stop()
 	Game.alien_fight_completed.emit()
 
 func _on_alien_shots_fired_timer_timeout() -> void:

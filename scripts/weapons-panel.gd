@@ -31,7 +31,8 @@ func _on_toggle_button_pressed() -> void:
 
 func _on_weapons_fill_timer_timeout() -> void:
 	if Ship.weapons_energy > 0 and toggle_button.button_pressed:
-		weapon_fill.position.y -= 20
+		var newPosY = clamp(weapon_fill.position.y - 20, -1700, 0)
+		weapon_fill.position.y = newPosY
 		Ship.weapons_energy -= 1
 	else:
 		toggle_button.button_pressed = false
@@ -39,4 +40,5 @@ func _on_weapons_fill_timer_timeout() -> void:
 
 func _on_weapons_firing_timer_timeout() -> void:
 	if weapon_fill.position.y < 0:
-		weapon_fill.position.y += 60
+		var newPosY = clamp(weapon_fill.position.y + 100, -1700, 0)
+		weapon_fill.position.y = newPosY
