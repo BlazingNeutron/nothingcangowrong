@@ -6,6 +6,7 @@ extends Node
 @onready var warning_icon: Sprite2D = $WarningIcon
 @onready var animation_player: AnimationPlayer = $WarningIcon/AnimationPlayer
 @onready var core_critical_player: AudioStreamPlayer = $CoreCriticalPlayer
+@onready var glow: Sprite2D = %Glow
 
 var dangerzone = 0
 var message_sent = false
@@ -17,7 +18,18 @@ func _ready() -> void:
 	animation_player.play("warning_flash")
 
 func _pulse_animation() -> void:
-	var glow = get_node("%Glow")
+	if Ship.core_energy > 40:
+		glow.modulate.r = 0.0
+		glow.modulate.g = 1.0
+		glow.modulate.b = 0.0
+	if Ship.core_energy <= 40:
+		glow.modulate.r = 1.0
+		glow.modulate.g = 0.5
+		glow.modulate.b = 0.0
+	if Ship.core_energy <= 10:
+		glow.modulate.r = 1.0
+		glow.modulate.g = 0.0
+		glow.modulate.b = 0.0
 	var tween = create_tween()
 	tween.tween_property(glow.material, "shader_parameter/bness", 0.4, 0.2)
 	tween.tween_property(glow.material, "shader_parameter/bness", 0.0, 0.2)
@@ -25,7 +37,7 @@ func _pulse_animation() -> void:
 	tween.tween_property(glow.material, "shader_parameter/bness", 0.0, 0.2)
 
 func update_core_energy() -> void:
-	if Ship.core_energy > 5:
+	if Ship.core_energy > 10:
 		warning_icon.hide()
 	var percent_energy = Ship.core_energy
 	var radial_angle = (percent_energy/100.0) * 180.0
@@ -40,7 +52,7 @@ func _on_core_energy_warning() -> void:
 	core_critical_player.play()
 
 func _on_timer_timeout() -> void:
-	if Ship.core_energy <= 5:
+	if Ship.core_energy <= 10:
 		_on_core_energy_changed()
 		dangerzone += 1
 		if dangerzone >= 3 and not message_sent:

@@ -3,6 +3,7 @@ extends Node2D
 @onready var timer: Timer = $Timer
 @onready var value_sprite: Sprite2D = $ValueMask/ValueSprite
 @onready var system_drained_player: AudioStreamPlayer = $SystemDrainedPlayer
+@onready var glow: Sprite2D = %Glow
 
 var unmute = false
 
@@ -16,7 +17,6 @@ func _update_display(value) -> void:
 	value_sprite.position.y = -2 * value
 
 func _pulse_animation() -> void:
-	var glow = get_node("%Glow")
 	var tween = create_tween()
 	tween.tween_property(glow.material, "shader_parameter/bness", 0.4, 0.2)
 	tween.tween_property(glow.material, "shader_parameter/bness", 0.0, 0.2)

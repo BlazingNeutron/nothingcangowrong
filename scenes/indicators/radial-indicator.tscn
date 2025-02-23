@@ -71,6 +71,7 @@ region_rect = Rect2(0, 0, 250, 125)
 
 [node name="Glow" type="Sprite2D" parent="ValueMask"]
 unique_name_in_owner = true
+modulate = Color(0.94902, 0.517647, 0, 1)
 clip_children = 2
 material = SubResource("ShaderMaterial_7n7t7")
 scale = Vector2(1.1, 1.1)
